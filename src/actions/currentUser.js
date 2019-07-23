@@ -8,7 +8,14 @@ export const setCurrentUser = user => {
 
 //asynchronous action creators
 export const login = info => {
-  return {
-    return fetch("http://localhost:3000/")
+  return dispatch => {
+    return fetch(
+      "http://localhost:3000/api/v1/login" ,{
+      method: 'POST',
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify()
+    })
   }
 }
