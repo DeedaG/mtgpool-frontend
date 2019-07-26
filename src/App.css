@@ -31,3 +31,17 @@
     transform: rotate(360deg);
   }
 }
+
+
+.NavBar {
+  background-color: silver;
+  font-size: calc(10px + 2vmin);
+  min-height: 10vh
+  
+}
+
+.MainContainer {
+  background-color: darkgreen;
+  color: white;
+  min-height: 100vh;
+}
