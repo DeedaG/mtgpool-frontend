@@ -37,6 +37,7 @@ export const login = info => {
           dispatch(setCurrentUser(response.data))
           dispatch(getMyPools())
           dispatch(resetLoginForm())
+          // history.push('/')
         }
       })
       .catch(console.log)
