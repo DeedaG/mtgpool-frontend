@@ -1,10 +1,11 @@
 import React from 'react';
-// import NavBar from './components/NavBar.js';
+import NavBar from './components/NavBar.js';
 // import MainContainer from './components/MainContainer.js';
 import './App.css';
 import { connect } from 'react-redux'
 import { getCurrentUser} from './actions/currentUser.js'
 import Login from './components/Login.js'
+// import Logout from './components/Logout.js'
 import MyPools from './components/MyPools.js'
 // import PoolCard from './components/PoolCard.js'
 import Home from './components/Home.js'
@@ -23,13 +24,13 @@ class App extends React.Component {
 
     return (
       <div className="App">
-      <Switch>
-        <Route exact path='/' render={(props)=>loggedIn ? <MyPools/> : <Home/>}/>
-        <Route exact path='/login' component={Login}/>
-        <Route exact path='/my-pools' component={MyPools}/>
-        <Route exact path='/pools/new' component={NewPoolForm}/>
-      </Switch>
-    </div>
+        { loggedIn ? <NavBar/> : <Home/> }
+        <Switch>
+          <Route exact path='/login' component={Login}/>
+          <Route exact path='/pools' component={MyPools}/>
+          <Route exact path='/pools/new' component={NewPoolForm}/>
+        </Switch>
+      </div>
           // <Route exact path='/Pools/:id' render={props => {
             //     // I need to get ???
             //   const pool = pools.find(pool => pool.id === props.match.params.id)
