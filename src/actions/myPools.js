@@ -27,3 +27,9 @@ export const getMyPools = () => {
       .catch(console.log)
   }
 }
+
+export const clearMyPools = () => {
+  return {
+    type: "CLEAR_MY_POOLS"
+  }
+}
