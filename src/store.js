@@ -1,4 +1,4 @@
-import users from './reducers/users.js'
+// import users from './reducers/users.js'
 import currentUser from './reducers/currentUser.js'
 import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
@@ -7,7 +7,7 @@ import myPools from './reducers/myPools.js'
 import newPoolForm from './reducers/newPoolForm.js'
 
 const reducer = combineReducers({
-  users: users,
+  // users: users,
   currentUser,
   loginForm,
   myPools,
