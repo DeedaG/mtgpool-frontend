@@ -5,7 +5,7 @@ import { login } from "../actions/currentUser.js"
 
 
 // updating form handler using redux
-const Login = ({ loginFormData, updateLoginForm, login }) => {
+const Login = ({ loginFormData, updateLoginForm, login, history }) => {
   const handleChange = event => {
     const {name, value} = event.target
     const updatedFormInfo = {
@@ -17,7 +17,7 @@ const Login = ({ loginFormData, updateLoginForm, login }) => {
 
   const handleSubmit = event => {
     event.preventDefault()
-    login(loginFormData)
+    login(loginFormData, history)
   }
 
   return (
