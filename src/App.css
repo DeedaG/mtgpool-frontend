@@ -40,8 +40,16 @@
 
 }
 
-.MainContainer {
+.App {
   background-color: darkgreen;
   color: white;
   min-height: 100vh;
+}
+
+a {
+  color: black;
+}
+
+a.active {
+  color: darkblue;
 }
