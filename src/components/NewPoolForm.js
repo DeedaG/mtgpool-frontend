@@ -9,10 +9,10 @@ const NewPoolForm = ({ name, pool_amount }) => {
     updateNewPoolForm(name,value)
   }
 
-  const handleSubmit = event => preventDefault()
+  const handleSubmit = event => event.preventDefault()
 
   return (
-    <form onSubmit = {handleSubmit=>
+    <form onSubmit = {handleSubmit}>
       <input
         placeholder="name"
         name="name"
@@ -27,7 +27,8 @@ const NewPoolForm = ({ name, pool_amount }) => {
       /><br/>
       <input
         type="submit"
-        value="Create Pool" />
+        value="Create Pool"
+        />
 
     </form>
   )};
