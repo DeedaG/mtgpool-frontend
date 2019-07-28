@@ -1,5 +1,5 @@
 import { resetLoginForm } from "./loginForm.js";
-import { getMyPools } from "./myPools.js"
+import { getMyPools, clearMyPools } from "./myPools.js"
 
 //synchronous action creators
 export const setCurrentUser = user => {
@@ -17,7 +17,7 @@ export const clearCurrentUser = () => {
 
 
 //asynchronous action creators
-export const login = info => {
+export const login = (info, history) => {
   return dispatch => {
     // console.log(info)
     return fetch("http://localhost:3000/api/v1/login",
@@ -37,7 +37,7 @@ export const login = info => {
           dispatch(setCurrentUser(response.data))
           dispatch(getMyPools())
           dispatch(resetLoginForm())
-          // history.push('/')
+          history.push('/')
         }
       })
       .catch(console.log)
@@ -48,6 +48,7 @@ export const login = info => {
   export const logout = () => {
     return dispatch => {
       dispatch(clearCurrentUser())
+      dispatch(clearMyPools())
       return fetch('http://localhost:3000/api/v1/logout',
       {
         credentials: "include",
