@@ -1,3 +1,4 @@
+// import { resetNewPoolForm } from './newPoolForm'
 
 export const setMyPools = pools => {
   return {
@@ -44,7 +45,7 @@ export const getMyPools = () => {
   }
 }
 
-export const createPool = poolData => {
+export const createPool = ( poolData, history ) => {
   return dispatch => {
     console.log(poolData)
     const sendablePoolData = {
@@ -65,7 +66,12 @@ export const createPool = poolData => {
     })
     .then(r => r.json())
     .then(resp => {
-
+      if (resp.error) {
+        alert(resp.error)
+      }else {
+      dispatch(addPool(resp.data))
+      history.push(`/pools/${resp.data.id}`)
+     }
     })
   }
 }
