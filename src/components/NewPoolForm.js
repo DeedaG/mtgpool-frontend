@@ -3,6 +3,7 @@ import { updateNewPoolForm } from '../actions/newPoolForm.js'
 import { createPool } from '../actions/myPools.js'
 import { connect } from 'react-redux'
 
+
 const NewPoolForm = ({ formData, updateNewPoolForm, createPool, history, userId }) => {
   const { name, pool_amount } = formData
 
@@ -16,8 +17,9 @@ const NewPoolForm = ({ formData, updateNewPoolForm, createPool, history, userId 
     createPool({
       ...formData,
       userId
-    })
+    }, history)
   }
+
 
   return (
     <form onSubmit = {handleSubmit}>
@@ -38,11 +40,10 @@ const NewPoolForm = ({ formData, updateNewPoolForm, createPool, history, userId 
         placeholder="investor"
          name="investor_id">
           <option value={1}>Fancy Bank</option>
-            <option value={2}>Investor</option>
+          <option value={2}>Investor</option>
         >
       </select>
-      <br/>
-
+       <br/>
       <input
         type="submit"
         value="Create Pool"
@@ -52,6 +53,7 @@ const NewPoolForm = ({ formData, updateNewPoolForm, createPool, history, userId 
   )};
 
 const mapStateToProps = state => {
+    // debugger
   const userId = state.currentUser ? state.currentUser.id : ""
     return {
       formData: state.newPoolForm,
