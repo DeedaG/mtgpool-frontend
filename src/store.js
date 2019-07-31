@@ -5,13 +5,15 @@ import thunk from 'redux-thunk';
 import loginForm from './reducers/loginForm.js'
 import myPools from './reducers/myPools.js'
 import newPoolForm from './reducers/newPoolForm.js'
+import loans from './reducers/loans.js'
 
 const reducer = combineReducers({
   // users: users,
   currentUser,
   loginForm,
   myPools,
-  newPoolForm
+  newPoolForm,
+  loans
 })
 
 const composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
