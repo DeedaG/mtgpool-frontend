@@ -6,3 +6,9 @@ export const  updateNewPoolForm = (name, value) => {
     formData
   }
 }
+
+export const  resetNewPoolForm = () => {
+  return {
+    type: "RESET_NEW_POOL_FORM"
+  }
+}
