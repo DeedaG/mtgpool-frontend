@@ -1,5 +1,6 @@
 import { resetLoginForm } from "./loginForm.js";
 import { getMyPools, clearMyPools } from "./myPools.js"
+import { getMyLoans } from "./loans.js"
 
 //synchronous action creators
 export const setCurrentUser = user => {
@@ -36,6 +37,7 @@ export const login = (info, history) => {
         } else {
           dispatch(setCurrentUser(response.data))
           dispatch(getMyPools())
+          dispatch(getMyLoans())
           dispatch(resetLoginForm())
           history.push('/')
         }
@@ -76,6 +78,7 @@ export const login = (info, history) => {
           } else {
             dispatch(setCurrentUser(response.data))
             dispatch(getMyPools())
+            dispatch(getMyLoans())
           }
         })
         .catch(console.log)
