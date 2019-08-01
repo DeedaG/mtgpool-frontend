@@ -6,7 +6,7 @@ import { Link } from 'react-router-dom'
 
 const MyPools = props => {
   const poolCards = props.pools.length > 0 ? props.pools.map(p =>
-   <Link to ={`/pools/${p.id}`} key={p.id}>{p.attributes.name}</Link>) : null
+   <><Link to ={`/pools/${p.id}`} key={p.id}>{p.attributes.name}</Link><br></br></>) : null
   return (
 
     poolCards
@@ -15,8 +15,10 @@ const MyPools = props => {
 }
 
 const mapStateToProps = state => {
+  // debugger
   return {
-    pools: state.myPools
+    pools: state.myPools,
+    loans: state.loans
   }
 }
 
