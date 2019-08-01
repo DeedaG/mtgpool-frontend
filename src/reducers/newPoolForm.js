@@ -1,7 +1,8 @@
 const initialState = {
   name: "",
   pool_amount: "",
-  investor_id: ""
+  investor_id: "",
+  loans: ""
 }
 
 export default (state=initialState, action) => {
@@ -13,6 +14,8 @@ export default (state=initialState, action) => {
         [action.formData.name]: action.formData.value }
     case 'RESET_NEW_POOL_FORM':
       return initialState
+    case "SET_FORM_DATA_FOR_EDIT":
+        return action.poolFormData
     default:
       return state
   }
