@@ -21,6 +21,14 @@ export const addPool = pool => {
   }
 }
 
+export const deletePoolSuccess = poolId => {
+  return {
+    type: 'DELETE_POOL',
+    poolId
+  }
+}
+
+
 export const updatePoolSuccess = pool => {
   return {
     type: 'UPDATE_POOL',
@@ -56,12 +64,11 @@ export const createPool = ( poolData, history ) => {
   return dispatch => {
     console.log(poolData)
     const sendablePoolData = {
-      pool: {
         name: poolData.name,
         pool_amount: poolData.pool_amount,
         investor_id: poolData.investor_id,
-        user_id: poolData.userId
-      }
+        user_id: poolData.userId,
+        loans: poolData.loans
     }
     return fetch('http://localhost:3000/api/v1/pools', {
       credentials: 'include',
@@ -88,15 +95,13 @@ export const updatePool = ( poolData, history ) => {
   return dispatch => {
     console.log(poolData)
     const sendablePoolData = {
-      pool: {
         name: poolData.name,
         pool_amount: poolData.pool_amount,
         investor_id: poolData.investor_id,
-        user_id: poolData.userId,
+
         loans: poolData.loans
-      }
     }
-    return fetch(`http://localhost:3000/api/v1/pools/$(poolData.poolId)`, {
+    return fetch(`http://localhost:3000/api/v1/pools/${poolData.poolId}`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {
@@ -110,9 +115,32 @@ export const updatePool = ( poolData, history ) => {
         alert(resp.error)
       }else {
       dispatch(updatePoolSuccess(resp.data))
-      dispatch(resetNewPoolForm())
       history.push(`/pools/${resp.data.id}`)
      }
     })
   }
+}
+
+export const deletePool = (poolId, history) => {
+  return dispatch => {
+    return fetch(`http://localhost:3000/api/v1/pools/${poolId}`, {
+      credentials: "include",
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json"
+      }
+    })
+      .then(r => r.json())
+      .then(resp => {
+        if (resp.error) {
+          alert(resp.error)
+        } else {
+          dispatch(deletePoolSuccess(poolId))
+          history.push(`/pools`)
+        }
+      })
+      .catch(console.log)
+
+  }
+
 }
