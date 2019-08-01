@@ -3,7 +3,7 @@ import { updateNewPoolForm } from '../actions/newPoolForm.js'
 import { connect } from 'react-redux'
 
 
-const NewPoolForm = ({ formData, updateNewPoolForm, history, userId, pool, handleSubmit, editMode }) => {
+const NewPoolForm = ({ formData, updateNewPoolForm, userId, pool, handleSubmit, editMode }) => {
   const { name, pool_amount, loans } = formData
 
   const handleChange = event => {
@@ -13,7 +13,9 @@ const NewPoolForm = ({ formData, updateNewPoolForm, history, userId, pool, handl
 
 
   return (
-    <form onSubmit = {event => handleSubmit(event, formData, userId, history)}>
+    <form onSubmit = {event => {
+      event.preventDefault()
+      handleSubmit(formData)}}>
       <input
         placeholder="name"
         name="name"
