@@ -1,4 +1,4 @@
-// import { resetNewPoolForm } from './newPoolForm'
+import { resetNewPoolForm } from './newPoolForm'
 
 export const setMyPools = pools => {
   return {
@@ -17,6 +17,13 @@ export const clearMyPools = () => {
 export const addPool = pool => {
   return {
     type: 'ADD_POOL',
+    pool
+  }
+}
+
+export const updatePoolSuccess = pool => {
+  return {
+    type: 'UPDATE_POOL',
     pool
   }
 }
@@ -70,6 +77,40 @@ export const createPool = ( poolData, history ) => {
         alert(resp.error)
       }else {
       dispatch(addPool(resp.data))
+      dispatch(resetNewPoolForm())
+      history.push(`/pools/${resp.data.id}`)
+     }
+    })
+  }
+}
+
+export const updatePool = ( poolData, history ) => {
+  return dispatch => {
+    console.log(poolData)
+    const sendablePoolData = {
+      pool: {
+        name: poolData.name,
+        pool_amount: poolData.pool_amount,
+        investor_id: poolData.investor_id,
+        user_id: poolData.userId,
+        loans: poolData.loans
+      }
+    }
+    return fetch(`http://localhost:3000/api/v1/pools/$(poolData.poolId)`, {
+      credentials: 'include',
+      method: 'PATCH',
+      headers: {
+        "content-Type": "application/json"
+      },
+      body: JSON.stringify(sendablePoolData)
+    })
+    .then(r => r.json())
+    .then(resp => {
+      if (resp.error) {
+        alert(resp.error)
+      }else {
+      dispatch(updatePoolSuccess(resp.data))
+      dispatch(resetNewPoolForm())
       history.push(`/pools/${resp.data.id}`)
      }
     })
