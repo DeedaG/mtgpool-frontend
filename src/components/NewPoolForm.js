@@ -1,28 +1,19 @@
 import React from 'react'
 import { updateNewPoolForm } from '../actions/newPoolForm.js'
-import { createPool } from '../actions/myPools.js'
 import { connect } from 'react-redux'
 
 
-const NewPoolForm = ({ formData, updateNewPoolForm, createPool, history, userId }) => {
-  const { name, pool_amount } = formData
+const NewPoolForm = ({ formData, updateNewPoolForm, history, userId, pool, handleSubmit, editMode }) => {
+  const { name, pool_amount, loans } = formData
 
   const handleChange = event => {
     const { name, value } = event.target
     updateNewPoolForm(name,value)
   }
 
-  const handleSubmit = event => {
-    event.preventDefault()
-    createPool({
-      ...formData,
-      userId
-    }, history)
-  }
-
 
   return (
-    <form onSubmit = {handleSubmit}>
+    <form onSubmit = {event => handleSubmit(event, formData, userId, history)}>
       <input
         placeholder="name"
         name="name"
@@ -46,9 +37,8 @@ const NewPoolForm = ({ formData, updateNewPoolForm, createPool, history, userId 
        <br/>
       <input
         type="submit"
-        value="Create Pool"
+        value={editMode ? "Update Pool" : "Create Pool"}
         />
-
     </form>
   )};
 
@@ -61,4 +51,4 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps, { updateNewPoolForm, createPool })(NewPoolForm);
+export default connect(mapStateToProps, { updateNewPoolForm })(NewPoolForm);
