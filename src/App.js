@@ -1,11 +1,9 @@
 import React from 'react';
 import NavBar from './components/NavBar.js';
-import { setFormDataForEdit } from './actions/newPoolForm.js'
 import './App.css';
 import { connect } from 'react-redux'
 import { getCurrentUser} from './actions/currentUser.js'
 import Login from './components/Login.js'
-import NewPoolForm from './components/NewPoolForm.js'
 import MyPools from './components/MyPools.js'
 import MyLoans from './components/MyLoans.js'
 import PoolCard from './components/PoolCard.js'
@@ -57,4 +55,4 @@ class App extends React.Component {
   }
 
 
-export default withRouter(connect(mapStateToProps, { getCurrentUser, setFormDataForEdit })(App));
+export default withRouter(connect(mapStateToProps, { getCurrentUser })(App));
