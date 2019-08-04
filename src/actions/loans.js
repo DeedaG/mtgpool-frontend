@@ -1,9 +1,18 @@
+// import { addPool } from './myPools.js'
+
 export const setMyLoans = loans => {
   return {
     type: "SET_MY_LOANS",
     loans
   }
 }
+
+// export const addLoansToPool = (loan) => {
+//   return {
+//     type: 'ADD_LOANS_TO_POOL',
+//     payload: loan
+//   })
+// }
 
 
 export const getMyLoans = () => {

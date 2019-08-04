@@ -1,7 +1,9 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+// import { connect } from 'react-redux'
 
-const PoolCard = ({pool, loan}) => {
+const PoolCard = ({pool}) => {
+
   return (
     pool ?
     <div>
@@ -9,13 +11,15 @@ const PoolCard = ({pool, loan}) => {
       Pool Amount: <p>{pool.attributes.pool_amount}</p>
     Investor: <p>{pool.attributes.investor_id}</p>
     Commited Loan Amounts:  <p>{pool.attributes.loans.map((loan) => (
-          <li>{loan.amount}</li> ))}</p>
+          <li key={loan.id}>{loan.amount}</li> ))}</p>
 
-      <Link to={`/pools/${pool.id}/edit`}>Edit this pool</Link><br></br>
-      <Link to={'/loans'}>Browse Loans</Link>
+      <Link to={`/pools/${pool.id}/edit`} >Edit this pool</Link><br></br>
+      <Link to={`/loans`}>Browse loans</Link><br></br>
     </div> :
     null
   )
 }
 
-export default PoolCard
+
+
+export default PoolCard;

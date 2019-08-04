@@ -15,10 +15,11 @@ export const  resetNewPoolForm = () => {
 
 export const setFormDataForEdit = pool => {
   const poolFormData = {
+    id: pool.attributes.id,
     name: pool.attributes.name,
     pool_amount: pool.attributes.pool_amount,
     investor_id: pool.attributes.investor_id,
-    loans: pool.attributes.loans
+    loans: pool.loans
   }
   return {
     type: "SET_FORM_DATA_FOR_EDIT",

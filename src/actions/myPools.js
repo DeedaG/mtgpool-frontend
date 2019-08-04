@@ -1,4 +1,5 @@
 import { resetNewPoolForm } from './newPoolForm'
+// import { addLoansToPool } from './loans'
 
 export const setMyPools = pools => {
   return {
@@ -20,6 +21,7 @@ export const addPool = pool => {
     pool
   }
 }
+
 
 export const deletePoolSuccess = poolId => {
   return {
@@ -68,7 +70,10 @@ export const createPool = ( poolData, history ) => {
         pool_amount: poolData.pool_amount,
         investor_id: poolData.investor_id,
         user_id: poolData.userId,
-        loans: poolData.loans
+        loans: [{
+          borrower: poolData.borrower,
+          pool_id: poolData.pool_id,
+          amount: poolData.amount}]
     }
     return fetch('http://localhost:3000/api/v1/pools', {
       credentials: 'include',
@@ -98,8 +103,7 @@ export const updatePool = ( poolData, history ) => {
         name: poolData.name,
         pool_amount: poolData.pool_amount,
         investor_id: poolData.investor_id,
-
-        loans: poolData.loans
+        loan: poolData.loans
     }
     return fetch(`http://localhost:3000/api/v1/pools/${poolData.poolId}`, {
       credentials: 'include',
@@ -140,7 +144,5 @@ export const deletePool = (poolId, history) => {
         }
       })
       .catch(console.log)
-
   }
-
 }

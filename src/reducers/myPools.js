@@ -6,6 +6,10 @@ export default (state = [], action) => {
       return action.pools
     case "ADD_POOL":
       return state.concat(action.pool)
+  //   case "ADD_LOANS_TO_POOL":
+  // debugger
+  //    return  state.attribute.loans.pool_id = action.loan.pool_id
+
     case "UPDATE_POOL":
       return state.map(pool => pool.id === action.pool.id ? action.pool : pool)
     case "DELETE_POOL":
