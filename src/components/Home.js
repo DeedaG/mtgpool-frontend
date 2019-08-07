@@ -4,6 +4,8 @@ import { Link } from 'react-router-dom'
 
 const Home = () => (
   <div>
+    <br></br>
+    <br></br>
     <h4>Welcome, please <Link to="/login"> Log In </Link> </h4>
   </div>
 )
