@@ -16,6 +16,7 @@ const NewPoolForm = ({ formData, updateNewPoolForm, userId, pool, handleSubmit, 
     <form onSubmit = {event => {
       event.preventDefault()
       handleSubmit(formData)}}>
+      <br></br>
       <input
         placeholder="name"
         name="name"
