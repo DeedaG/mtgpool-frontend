@@ -1,5 +1,5 @@
 import React from 'react'
-import { connect } from 'react-redux'
+// import { connect } from 'react-redux'
 
 
 const LoanCard = ({loan}) => {
@@ -11,18 +11,18 @@ const LoanCard = ({loan}) => {
       Pool Id: <p>{loan.attributes.pool_id}</p>
 
       </div> : null
-      
+
     )
-  }
 
-const mapStateToProps = state => {
-  const poolId = state.loans.pool_id
+
+// const mapStateToProps = state => {
+//   const poolId = state.loans.pool_id
   // debugger
-  return {
-    // pools: state.myPools,
-    poolId
-
-  }
+  // return {
+  //   // pools: state.myPools,
+  //   LoanCard
+  //
+  // }
 }
 
-export default connect(mapStateToProps)(LoanCard);
+export default LoanCard;
