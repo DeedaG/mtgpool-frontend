@@ -9,9 +9,7 @@ const MyPools = props => {
    <><Link key={p.id} to ={`/pools/${p.id}`} >{p.attributes.name}</Link>
       <br></br><br></br></>) : null
   return (
-
     poolCards
-
   )
 }
 
