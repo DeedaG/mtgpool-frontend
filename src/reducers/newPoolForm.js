@@ -1,5 +1,4 @@
 const initialState = {
-      id: "",
     name: "",
     pool_amount: "",
     investor_id: "",
