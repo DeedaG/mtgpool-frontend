@@ -1,9 +1,10 @@
 import React from 'react'
 import { updateNewPoolForm } from '../actions/newPoolForm.js'
 import { connect } from 'react-redux'
+import LoanCheckbox from './LoanCheckbox.js'
 
 
-const NewPoolForm = ({ formData, updateNewPoolForm, userId, pool, handleSubmit, editMode }) => {
+const NewPoolForm = ({ formData, updateNewPoolForm, userId, handleSubmit, editMode }) => {
   const { name, pool_amount } = formData
 
   const handleChange = event => {
@@ -41,6 +42,7 @@ const NewPoolForm = ({ formData, updateNewPoolForm, userId, pool, handleSubmit, 
         >
       </select>
         <br></br>
+        <LoanCheckbox />
           <input
             type="submit"
             value={editMode ? "Update Pool" : "Create Pool"}
@@ -53,7 +55,7 @@ const mapStateToProps = state => {
     return {
       formData: state.newPoolForm,
       userId,
-      // loans: state.loans
+      loans: state.newPoolForm.loans
   }
 }
 
