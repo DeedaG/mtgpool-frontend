@@ -1,42 +1,56 @@
-import React, { Component } from 'react'
-import { addLoansToPool } from '../actions/loans.js'
+import React from 'react'
+import { updateNewPoolForm } from '../actions/newPoolForm.js'
+import { connect } from 'react-redux'
 
 
-const LoanCheckbox = ({ loans, pool, handleSubmit, updatePool, editMode, history }) => {
-  // debugger
-    const handleCheckbox = event => {
-      console.log(event.target.checked, event.target.name);
-      addLoansToPool(event.target.name)
+class LoanCheckbox extends React.Component {
+  state = {
+    loan: "",
+    addedLoans: [],
+  }
+
+  handleChangedLoans = (event) => {
+    this.setState({
+      loan: {
+      ...this.state.loan,
+        // attributes: {
+        // ...this.state.attributes,
+          id: event.target.value,
+          // type: "loan"
+        }
+    })
+    event.preventDefault()
+    this.setState(state => {
+      const addedLoans = [state.addedLoans.push(state.loan)];
+    return addedLoans})
+    this.props.updateNewPoolForm("loans", this.state.addedLoans)
+    // this.props.updateLoansInPool("loans", this.state.addedLoans)
+  }
+
+
+  render() {
+
+  return (
+    <div>
+     {this.props.loans.map(loan =>
+       <li key = {loan.id}>
+       <><input
+       name="loan"
+       type="checkbox"
+       onChange={this.handleChangedLoans}
+       value={loan.id}
+      />{loan.attributes.amount}<br></br></></li>)}
+      </div>
+     )
     }
+  }
 
-    return (
-    <form onSubmit = {event => {
-      event.preventDefault()
-      handleSubmit(formData)}}>
-      <label>Choose Loans</label><br/>
-      <div>
-       {loans.map(loan => (
-           <><input
+  const mapStateToProps = state => {
+     // debugger
+    return {
+      loans: state.loans,
+      pool: state.newPoolForm
+    }
+  }
 
-         name={loan.id}
-         type="checkbox"
-         key={loan.id}
-         onChange={handleCheckbox}
-         value={loan}
-         id={loan}
-       />{loan.attributes.amount}
-       <br></br></>
-       ))
-     }
-   </div>
-   <br></br>
-     <input
-       type="submit"
-       value={editMode ? "Update Pool" : "Create Pool"}
-     />
- </form>
-)};
-
-}
-
-export default LoanCheckbox
+  export default connect(mapStateToProps,{updateNewPoolForm})(LoanCheckbox)
