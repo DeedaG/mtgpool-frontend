@@ -70,10 +70,7 @@ export const createPool = ( poolData, history ) => {
         pool_amount: poolData.pool_amount,
         investor_id: poolData.investor_id,
         user_id: poolData.userId,
-        loans: [{
-          borrower: poolData.borrower,
-          pool_id: poolData.pool_id,
-          amount: poolData.amount}]
+        loans: poolData.loans
     }
     return fetch('http://localhost:3000/api/v1/pools', {
       credentials: 'include',
@@ -100,6 +97,7 @@ export const updatePool = ( poolData, history ) => {
   return dispatch => {
     console.log(poolData)
     const sendablePoolData = {
+        id: poolData.id,
         name: poolData.name,
         pool_amount: poolData.pool_amount,
         investor_id: poolData.investor_id,
