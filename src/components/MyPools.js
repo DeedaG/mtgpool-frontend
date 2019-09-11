@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-// import PoolCard from './PoolCard.js'
+import Comment from './Comment.js'
 import { Link } from 'react-router-dom'
 
 class MyPools extends React.Component {
@@ -34,6 +34,7 @@ render() {
 
       const allPoolCards = this.props.pools.length > 0 ? this.props.pools.map(p =>
         <><Link to ={`/pools/${p.id}`} >{p.attributes.name}</Link>
+        <Comment />
       <br></br><br></br></>) : null
 
       const greaterPools = this.props.pools.filter(p =>
