@@ -4,6 +4,7 @@ import { setFormDataForEdit, resetNewPoolForm } from '../actions/newPoolForm.js'
 import { connect } from 'react-redux'
 import NewPoolForm from '../components/NewPoolForm.js'
 
+
 class EditPoolContainer extends React.Component {
 
   componentDidMount() {
