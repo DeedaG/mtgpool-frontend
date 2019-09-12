@@ -1,5 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
+
 import { Link } from 'react-router-dom'
 
 class MyPools extends React.Component {
@@ -32,8 +33,8 @@ class MyPools extends React.Component {
 render() {
 
       const allPoolCards = this.props.pools.length > 0 ? this.props.pools.map(p =>
-        <><Link to ={`/pools/${p.id}`} >{p.attributes.name}</Link>
-      <br></br><br></br></>) : null
+        <li key = {p.id}><><Link to ={`/pools/${p.id}`} >{p.attributes.name}</Link>
+      <br></br><br></br></></li>) : null
 
       const greaterPools = this.props.pools.filter(p =>
         p.attributes.pool_amount > this.state.compareNumber
