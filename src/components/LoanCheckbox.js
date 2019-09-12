@@ -13,10 +13,7 @@ class LoanCheckbox extends React.Component {
     this.setState({
       loan: {
       ...this.state.loan,
-        // attributes: {
-        // ...this.state.attributes,
-          id: event.target.value,
-          // type: "loan"
+          id: event.target.value
         }
     })
     event.preventDefault()
