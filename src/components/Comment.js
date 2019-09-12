@@ -1,53 +1,41 @@
 import React from 'react'
+import { updatePool } from '../actions/myPools.js'
+import { connect } from 'react-redux'
 
-class Comment extends React.Component {
 
-  state = {
-    text: "",
-    comments: []
+const Comment =({pool}) => {
+
+  const handleChange = (event) => {
+    const { name, value } = event.target
+    const updatedComments = {
+      ...pool.attributes.comments,
+      [name]: value
+    }
+    updatePool()
   }
 
-
-  handleChange = (event) => {
-    // console.log(event.target.value)
-    this.setState ({
-      text: event.target.value
-    })
+  const handleSubmit = (event) => {
+    handleChange()
   }
-
-  handleSubmit = (event) => {
-    event.preventDefault();
-    this.setState(state => {
-      const comments = [...state.comments, state.text];
-       return {
-         comments,
-         text: ""
-       }
-     });
-    };
-
-
-  render() {
 
     return (
 
+      pool ?
       <div>
-          {this.state.comments.map(text => (
-            <li key={text}>{text}</li>
-          ))}
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={handleSubmit}>
           <input
             placeholder="add notes here"
             type="text"
-            value={this.state.text}
-            name="text"
-            onChange={this.handleChange}
-          />
-          <button type="submit" value="submit">Submit</button>
+            value={pool.attributes.comments}
+            name="comments"
+            onChange={handleChange}
+          >{pool.attributes.comments}</input><br></br>
+        <input type="submit" />
         </form>
-       </div>
+      </div> : null
        )
-      }
 }
 
-export default Comment;
+
+
+export default connect(null, {updatePool} )(Comment);
