@@ -101,7 +101,7 @@ export const updatePool = ( poolData, history ) => {
         name: poolData.name,
         pool_amount: poolData.pool_amount,
         investor_id: poolData.investor_id,
-        loan: poolData.loans
+        loans: poolData.loans
     }
     return fetch(`http://localhost:3000/api/v1/pools/${poolData.poolId}`, {
       credentials: 'include',
