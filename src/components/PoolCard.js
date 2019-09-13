@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 // import Comment from './Comment.js'
-// import { connect } from 'react-redux'
+
 
 const PoolCard = ({pool}) => {
 
@@ -22,4 +22,4 @@ const PoolCard = ({pool}) => {
 
 
 
-export default PoolCard;
+export default (PoolCard);
