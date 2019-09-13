@@ -4,27 +4,26 @@ import { Link } from 'react-router-dom'
 // import { addLoansToPool } from '../actions/loans.js'
 
 
-const MyLoans = ({loans}) => {
-
+const MyLoans = ({loans, loan, pools}) => {
 
   const loanCards =  loans.length > 0 ? loans.map(loan =>
 
-    	<><Link to ={`/loans/${loan.id}/edit`} key={loan.attributes.id}>
+    	<li key = {loan.id}><><Link to ={`/loans/${loan.id}/edit`} key={loan.attributes.id}>
           {loan.attributes.borrower} - ${loan.attributes.amount}
-          - {loan.attributes.rate}% - {loan.attributes.term}yr - Pool id:{loan.attributes.pool_id}
-        </Link><br></br><br></br></>) : null
+          - {loan.attributes.rate}% - {loan.attributes.term}yr -
+          Pool: {pools.filter(pool => pool.attributes.id === loan.attributes.pool_id).map(p => p.attributes.name)}
+        </Link><br></br><br></br></></li>) : null
 
   return (
-    // pooledLoans
     loanCards
-
   )
 }
 
   const mapStateToProps = state => {
 
     return {
-      loans: state.loans
+      loans: state.loans,
+      pools: state.myPools
 
     }
   }
