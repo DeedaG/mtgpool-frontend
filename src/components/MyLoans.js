@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 // import { addLoansToPool } from '../actions/loans.js'
 
 
-const MyLoans = ({loans, loan, pools}) => {
+const MyLoans = ({loans, pools}) => {
 
   const loanCards =  loans.length > 0 ? loans.map(loan =>
 
