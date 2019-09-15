@@ -5,40 +5,61 @@ import { connect } from 'react-redux'
 
 class LoanCheckbox extends React.Component {
   state = {
-    loan: "",
-    addedLoans: [],
+    // loan: "",
+    checkedLoans: []
   }
 
-  handleChangedLoans = (event) => {
-    this.setState({
-      loan: {
-      ...this.state.loan,
-          id: event.target.value
-        }
-    })
+  handleChangedLoans(e, value){
+    console.log("target =", e.target.checked)
+    console.log("state is", this.state)
+    if (e.target.checked){
+      //append to array
+      this.setState({
+        checkedLoans: this.state.checkedLoans.concat([value])
+        },
+        function () {
+          // console.log(this.state.checkedLoans);
+          this.props.updateNewPoolForm("loans", this.state.checkedLoans)
+        })
 
-    this.setState(state => {
-      const addedLoans = state.addedLoans.concat(state.loan);
-    return {
-      addedLoans
-      }
-    })
-    this.props.updateNewPoolForm("loans", this.state.addedLoans)
-    // this.props.updateLoansInPool("loans", this.state.addedLoans)
-  }
+    } else {
+      this.setState({
+        checkedLoans : []
+      })
+   }
+
+ }
+
+
+
+  // handleChangedLoans = (event) => {
+  //   this.setState({
+  //     loan: {
+  //     ...this.state.loan,
+  //         id: event.target.value
+  //       }
+  //     })
+  //   this.setState(state => {
+  //     const checkedLoans = state.checkedLoans.concat(state.loan);
+  //   return {
+  //     checkedLoans
+  //     }
+  //   })
+  //   this.props.updateNewPoolForm("loans", this.state.checkedLoans)
+  //   // this.props.updateLoansInPool("loans", this.state.checkedLoans)
+  // }
 
 
   render() {
 
   return (
-    <div>
-     {this.props.loans.map(loan =>
+    <div >
+     {this.props.loans.map((loan, index) =>
        <li key = {loan.id}>
        <><input
-       name="loan"
+       name="loans"
        type="checkbox"
-       onChange={this.handleChangedLoans}
-       value={loan.id}
+       onClick={(e)=>this.handleChangedLoans(e,loan)}
       />{loan.attributes.amount}<br></br></></li>)}
       </div>
      )
