@@ -16,10 +16,13 @@ class LoanCheckbox extends React.Component {
           id: event.target.value
         }
     })
-    event.preventDefault()
+
     this.setState(state => {
-      const addedLoans = [state.addedLoans.push(state.loan)];
-    return addedLoans})
+      const addedLoans = state.addedLoans.concat(state.loan);
+    return {
+      addedLoans
+      }
+    })
     this.props.updateNewPoolForm("loans", this.state.addedLoans)
     // this.props.updateLoansInPool("loans", this.state.addedLoans)
   }
