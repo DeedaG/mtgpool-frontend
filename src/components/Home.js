@@ -6,7 +6,14 @@ const Home = () => (
   <div>
     <br></br>
     <br></br>
-    <h4>Welcome, please <Link to="/login"> Log In </Link> </h4>
+    <h3>Welcome </h3>
+    <div>
+      <Link to="/signup">
+        <h4 style={{color: "white"}}>Sign up here</h4>
+      </Link>
+    </div>
+    <Link to="/login"><h4 style={{color: "white"}}> Log In</h4> </Link>
+
   </div>
 )
 export default Home;
