@@ -32,15 +32,38 @@ class MyPools extends React.Component {
 
 render() {
 
+    const pooltblHd =
+    <thead>
+      <tr>
+        <th>Pool Name</th>
+        <th>Pool Amount</th>
+      </tr>
+    </thead>
+
       const allPoolCards = this.props.pools.length > 0 ? this.props.pools.map(p =>
-        <li key = {p.id}><><Link to ={`/pools/${p.id}`} >{p.attributes.name}</Link>
-      <br></br><br></br></></li>) : null
+        <table key = {p.id}><>
+          {pooltblHd}
+          <tbody>
+            <tr>
+              <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
+              <td>${p.attributes.pool_amount.toFixed(2)}</td>
+            </tr>
+          </tbody>
+      <br></br><br></br></></table>) : null
 
       const greaterPools = this.props.pools.filter(p =>
         p.attributes.pool_amount > this.state.compareNumber
       ).map(p =>
-        <><Link to ={`/pools/${p.id}`} >{p.attributes.name}</Link>
-      <br></br><br></br></>)
+        <table key = {p.id}><>
+          {pooltblHd}
+          <tbody>
+            <tr>
+              <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
+              <td>${p.attributes.pool_amount.toFixed(2)}</td>
+            </tr>
+          </tbody>
+      <br></br><br></br></></table>)
+
 
       const abcPools = [...this.props.pools].sort(function(a, b) {
         var nameA = a.attributes.name.toUpperCase(); // ignore upper and lowercase
@@ -53,8 +76,16 @@ render() {
         }
         return 0;
       }).map(p =>
-        <><Link to ={`/pools/${p.id}`} >{p.attributes.name}</Link>
-    <br></br><br></br></>)
+        <table key = {p.id}><>
+          {pooltblHd}
+          <tbody>
+            <tr>
+              <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
+              <td>${p.attributes.pool_amount.toFixed(2)}</td>
+            </tr>
+          </tbody>
+      <br></br><br></br></></table>)
+
 
       const abcGreaterPools = [...this.props.pools].filter(p =>
         p.attributes.pool_amount > this.state.compareNumber
@@ -69,18 +100,26 @@ render() {
         }
         return 0;
       }).map(p =>
-        <><Link to ={`/pools/${p.id}`} >{p.attributes.name}</Link>
-    <br></br><br></br></>)
+        <table key = {p.id}><>
+          {pooltblHd}
+          <tbody>
+            <tr>
+              <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
+              <td>${p.attributes.pool_amount.toFixed(2)}</td>
+            </tr>
+          </tbody>
+      <br></br><br></br></></table>)
 
 
       return (
           <div>
             <h3><label>Current Pools</label></h3>
-            <p>{this.state.compareNumber > 0 && this.state.displaySorted ? abcGreaterPools
+            <p className="poolName">
+              {this.state.compareNumber > 0 && this.state.displaySorted ? abcGreaterPools
                 : (this.state.displaySorted ? abcPools
                   : (this.state.compareNumber > 0 ? greaterPools : allPoolCards))}</p>
                 <h4><label>Sort Pools</label></h4>
-            <button onClick={this.handleClick}>ABC Sort</button>
+            <button onClick={this.handleClick}>Sort Alphabetically</button>
 
            <form onSubmit={this.handleSubmit}>
 
