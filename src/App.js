@@ -3,6 +3,7 @@ import NavBar from './components/NavBar.js';
 import './App.css';
 import { connect } from 'react-redux'
 import { getCurrentUser} from './actions/currentUser.js'
+import Signup from './components/Signup.js'
 import Login from './components/Login.js'
 import MyPools from './components/MyPools.js'
 import MyLoans from './components/MyLoans.js'
@@ -27,6 +28,7 @@ class App extends React.Component {
         { loggedIn ? <NavBar/> : <Home/> }
         <Switch>
           <Route exact path='/login' component={Login}/>
+          <Route exact path='/signup' render={({history})=><Signup history={history}/>}/>
           <Route exact path='/pools' component={MyPools}/>
           <Route exact path='/pools/new' component={NewPoolContainer}/>
           <Route exact path='/pools/:id' render={props => {
