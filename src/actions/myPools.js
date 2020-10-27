@@ -62,7 +62,7 @@ export const getMyPools = () => {
   }
 }
 
-export const createPool = ( poolData, history ) => {
+export const createPool = ( poolData, history, userId ) => {
   return dispatch => {
     console.log(poolData)
     const sendablePoolData = {
