@@ -16,7 +16,7 @@ const NewPoolForm = ({ formData, updateNewPoolForm, userId, handleSubmit, editMo
 
     <form onSubmit = {event => {
       event.preventDefault()
-      handleSubmit(formData)}}>
+      handleSubmit(formData, userId)}}>
       <br></br>
       <input
         placeholder="name"
