@@ -1,6 +1,7 @@
 import { resetLoginForm } from "./loginForm.js";
 import { getMyPools, clearMyPools } from "./myPools.js"
 import { getMyLoans } from "./loans.js"
+import { resetSignupForm } from "./signupForm.js"
 
 //synchronous action creators
 export const setCurrentUser = user => {
@@ -45,6 +46,34 @@ export const login = (info, history) => {
       .catch(console.log)
     }
   }
+
+  export const signup = (credentials, history) => {
+  return dispatch => {
+    const userInfo = {
+      user: credentials
+    }
+    return fetch("http://localhost:3000/api/v1/signup", {
+      credentials: "include",
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify(userInfo)
+    })
+      .then(r => r.json())
+      .then(response => {
+        console.log("response", response)
+        if (response.error) {
+          alert(response.error)
+        } else {
+          dispatch(setCurrentUser(response.data))
+          dispatch(resetSignupForm())
+          history.push('/')
+        }
+      })
+      .catch(console.log)
+  }
+}
 
 // clear the session
   export const logout = () => {
