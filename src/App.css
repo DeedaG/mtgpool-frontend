@@ -29,24 +29,62 @@
   }
 }
 
+.button1 {
+  background-color: silver;
+  padding: 5px;
+  color: black;
+  border-style: solid;
+}
+
+.button2 {
+  background-color: silver;
+  padding: 5px;
+  /* color: green; */
+  background-color: green;
+}
 
 .NavBar {
-  background-color: silver;
+  /* background-color: silver; */
+  background-position: center;
   font-size: calc(10px + 2vmin);
-  min-height: 10vh
-
+  min-height: 10vh;
+  width: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
 }
 
 .App {
   background-color: darkgreen;
+  /* background-color: #282c34; */
   color: tan;
   min-height: 100vh;
+}
+
+.poolName {
+  background: silver;
+  text-align: center;
+  background-size: 20%;
+  margin-left: 40%;
+  margin-right: 40%;
+  border-style: solid;
+  color: black;
+}
+
+.pools {
+  background: silver;
+  text-align: center;
+  background-size: 33%;
+  margin-left: 33%;
+  margin-right: 33%;
+  border-style: solid;
 }
 
 .App {
   text-align: center;
   background-image: url("https://cdn.vox-cdn.com/thumbor/z8CNaf1y9dNAtx7YDOnCPGrQSPI=/0x0:6714x3944/1200x800/filters:focal(2580x771:3654x1845)/cdn.vox-cdn.com/uploads/chorus_image/image/59380133/shutterstock_555325381.0.jpg");
-  padding: 40px;
+  background-size:cover;
+  /* background-repeat: no-repeat; */
+  padding: 80px;
   color: white;
   min-height: 100vh;
 }
