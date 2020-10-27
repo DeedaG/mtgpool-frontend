@@ -7,6 +7,7 @@ import Signup from './components/Signup.js'
 import Login from './components/Login.js'
 import MyPools from './components/MyPools.js'
 import MyLoans from './components/MyLoans.js'
+import MyInvestors from './components/MyInvestors.js'
 import LoanCard from './components/LoanCard.js'
 import PoolCard from './components/PoolCard.js'
 import Home from './components/Home.js'
@@ -22,7 +23,8 @@ class App extends React.Component {
 
 
   render() {
-    const { loggedIn, pools, loans } = this.props
+    const { loggedIn, pools, loans, investors } = this.props
+    debugger
     return (
       <div className="App">
         { loggedIn ? <NavBar/> : <Home/> }
@@ -33,7 +35,7 @@ class App extends React.Component {
           <Route exact path='/pools/new' component={NewPoolContainer}/>
           <Route exact path='/pools/:id' render={props => {
               const pool = pools.find(pool => pool.id === props.match.params.id)
-                return <PoolCard pool={pool} {...props}/>
+                return <PoolCard pool={pool} investors={investors} {...props}/>
                 }
               }></Route>
           <Route exact path='/pools/:id/edit' render={props => {
@@ -44,6 +46,7 @@ class App extends React.Component {
           }/>
 
           <Route exact path='/loans' component={MyLoans}/>
+          <Route exact path='/investors' component={MyInvestors}/>
           <Route exact path='/loans/:id/edit' render={props => {
               const loan = loans.find(loan => loan.id === props.match.params.id)
             return <LoanCard loan={loan} {...props}/>
