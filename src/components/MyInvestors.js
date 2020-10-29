@@ -1,30 +1,53 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-// import { addLoansToPool } from '../actions/loans.js'
 
+class MyInvestors extends React.Component {
 
-const MyInvestors = ({investors, pools}) => {
+  render() {
 
-  const investorCards =  investors.length > 0 ? investors.map(investor =>
+  const newInv = <Link to ={`/investors/new`}>Add New Investor</Link>
+    // debugger
+  const investorCards =  this.props.investors.length > 0 ? this.props.investors.map(investor =>
+    <table className="investors" key = {investor.id}><>
+      <thead>
+        <tr>
+          <th>Id</th>
+          &nbsp;
+          <th>Investor</th>
+          &nbsp;
+          <th>Fee</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{investor.id}</td>
+          &nbsp;
+          <td>{investor.attributes.name} &nbsp;<Link to ={`/investors/${investor.id}/edit`}>
+                <button className="button3">Edit</button>
+              </Link>
+          </td>
+          &nbsp;
+          <td>${investor.attributes.fee ? investor.attributes.fee.toFixed(2) : ""}</td>
+        </tr>
+      </tbody>
+      <br></br></>
+  </table>) : <h3>No investors at this time</h3>
 
-    	<li key = {investor.id}><><Link to ={`/investors/${investor.id}/edit`} key={investor.attributes.id}>
-          {investor.attributes.borrower} - ${investor.attributes.amount}
-          - {investor.attributes.rate}% - {investor.attributes.term}yr -
-          Pool: {pools.filter(pool => pool.attributes.id === investor.attributes.pool_id).map(p => p.attributes.name)}
-        </Link><br></br><br></br></></li>) : null
 
   return (
-    investorCards
+      <div>
+        <button className ="button2 ">{newInv}</button>
+        {investorCards}
+      </div>
   )
+ }
 }
-
   const mapStateToProps = state => {
     return {
       investors: state.investors,
       pools: state.myPools
-
     }
   }
 
-export default connect(mapStateToProps)(MyInvestors)
+export default connect(mapStateToProps)(MyInvestors);
