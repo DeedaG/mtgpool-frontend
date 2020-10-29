@@ -1,6 +1,6 @@
 import React from 'react'
-import { updateInvestor, deleteInvestor } from '../actions/myInvestors.js'
-import { setFormDataForEdit, resetNewInvestorForm } from '../actions/newInvestorForm.js'
+import { updateInvestor, deleteInvestor } from '../actions/investors.js'
+import { setFormDataForEditInv, resetNewInvestorForm } from '../actions/newInvestorForm.js'
 import { connect } from 'react-redux'
 import NewInvestorForm from '../components/NewInvestorForm.js'
 
@@ -13,7 +13,7 @@ class EditInvestorContainer extends React.Component {
 
   componentDidUpdate(prevProps) {
     this.props.investor && !prevProps.investor &&
-    this.props.setFormDataForEdit(this.props.investor)
+    this.props.setFormDataForEditInv(this.props.investor)
   }
 
   componentWillUnmount() {
@@ -38,4 +38,4 @@ class EditInvestorContainer extends React.Component {
 
   }
 };
-export default connect(null, {updateInvestor, deleteInvestor, setFormDataForEdit, resetNewInvestorForm })(EditInvestorContainer);
+export default connect(null, {updateInvestor, deleteInvestor, setFormDataForEditInv, resetNewInvestorForm })(EditInvestorContainer);

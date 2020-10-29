@@ -96,7 +96,7 @@ export const updateInvestor = ( investorData, history ) => {
         name: investorData.name,
         fee: investorData.fee
     }
-    return fetch(`http://localhost:3000/api/v1/pools/${investorData.investorId}`, {
+    return fetch(`http://localhost:3000/api/v1/investors/${investorData.investorId}`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {

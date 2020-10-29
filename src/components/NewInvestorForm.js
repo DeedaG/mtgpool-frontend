@@ -51,9 +51,12 @@ class NewInvestorForm extends React.Component {
           value={this.state.formData.fee}
         /><br/>
         <input
+          className="button2"
           type="submit"
-          value="Enter"
-        /><br/>
+          value={this.editMode ? "Update Investor" : "Create Investor"}
+        />
+
+        <br/>
       </form>
   )
  }

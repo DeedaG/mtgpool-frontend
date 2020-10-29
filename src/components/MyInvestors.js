@@ -9,26 +9,22 @@ class MyInvestors extends React.Component {
   const newInv = <Link to ={`/investors/new`}>Add New Investor</Link>
     // debugger
   const investorCards =  this.props.investors.length > 0 ? this.props.investors.map(investor =>
-    <table className="investors" key = {investor.id}><>
-      <thead>
+    <table className="investors"><>
+      <thead >
         <tr>
-          <th>Id</th>
-          &nbsp;
-          <th>Investor</th>
-          &nbsp;
-          <th>Fee</th>
+          <th className="investorTextLeft">Id</th>
+          <th className="investorTextCenter">Investor</th>
+          <th className="investorTextRight">Fee</th>
         </tr>
       </thead>
-      <tbody>
+      <tbody >
         <tr>
-          <td>{investor.id}</td>
-          &nbsp;
-          <td>{investor.attributes.name} &nbsp;<Link to ={`/investors/${investor.id}/edit`}>
+          <td className="investorTextLeft">{investor.id}</td>
+          <td className="investorTextCenter">{investor.attributes.name} &nbsp;<Link to ={`/investors/${investor.id}/edit`}>
                 <button className="button3">Edit</button>
               </Link>
           </td>
-          &nbsp;
-          <td>${investor.attributes.fee ? investor.attributes.fee.toFixed(2) : ""}</td>
+          <td className="investorTextRight">${investor.attributes.fee ? investor.attributes.fee.toFixed(2) : ""}</td>
         </tr>
       </tbody>
       <br></br></>

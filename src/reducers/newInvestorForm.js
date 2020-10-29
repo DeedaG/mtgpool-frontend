@@ -12,9 +12,9 @@ export default (state=initialState, action) => {
         [action.formData.name]: action.formData.value }
     case 'RESET_NEW_INVESTOR_FORM':
       return initialState
-    case "SET_FORM_DATA_FOR_EDIT":
+    case "SET_FORM_DATA_FOR_EDITINV":
         return action.investorFormData
-
+debugger
     default:
       return state
   }

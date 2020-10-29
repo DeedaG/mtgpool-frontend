@@ -13,7 +13,7 @@ import PoolCard from './components/PoolCard.js'
 import Home from './components/Home.js'
 import NewInvestorContainer from './containers/NewInvestorContainer.js'
 import EditPoolContainer from './containers/EditPoolContainer.js'
-import EditInvestorContainer from './containers/EditPoolContainer.js'
+import EditInvestorContainer from './containers/EditInvestorContainer.js'
 import NewPoolContainer from './containers/NewPoolContainer.js'
 import { Route, Switch, withRouter } from 'react-router-dom'
 

@@ -27,7 +27,6 @@ const PoolCard = ({pool, investor}) => {
                 : null
             }
             </td>
-
           </tr>
         </tbody>
       </table></h3>
@@ -54,7 +53,7 @@ const PoolCard = ({pool, investor}) => {
            </tbody>
         </table>
         <br></br>
-        <Link className="button2" to={`/pools/${pool.id}/edit`} >Edit this pool</Link><br></br>
+        <Link className="button3" to={`/pools/${pool.id}/edit`} >Edit this pool</Link><br></br>
         <br></br>
         <Link className="button1" to={`/loans`}>Browse More Loans</Link><br></br><br></br>
     </div> :
