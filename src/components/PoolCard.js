@@ -20,7 +20,14 @@ const PoolCard = ({pool, investor}) => {
           <tr>
             <td>{pool.attributes.name}</td>
             <td>${pool.attributes.pool_amount.toFixed(2)}</td>
-            <td>{investor ? investor.attributes.name : null}</td>
+            <td>
+              { investor ?
+                <Link to ={`/investors/${investor.id}/edit`} style={{color: "green"}}>
+                  {investor.attributes.name}</Link>
+                : null
+            }
+            </td>
+
           </tr>
         </tbody>
       </table></h3>

@@ -49,7 +49,7 @@ render() {
             <tr>
               <td>{p.id}</td>
               &nbsp;
-              <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
+              <td><Link to ={`/pools/${p.id}`} style={{color: "green"}}>{p.attributes.name}</Link></td>
               &nbsp;
               <td>${p.attributes.pool_amount.toFixed(2)}</td>
             </tr>

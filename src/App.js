@@ -14,7 +14,7 @@ import Home from './components/Home.js'
 import NewInvestorContainer from './containers/NewInvestorContainer.js'
 import EditPoolContainer from './containers/EditPoolContainer.js'
 import EditInvestorContainer from './containers/EditPoolContainer.js'
-import NewPoolContainer from './containers/NewInvestorContainer.js'
+import NewPoolContainer from './containers/NewPoolContainer.js'
 import { Route, Switch, withRouter } from 'react-router-dom'
 
 class App extends React.Component {
