@@ -8,7 +8,7 @@ import NewInvestorForm from '../components/NewInvestorForm.js'
 class EditInvestorContainer extends React.Component {
 
   componentDidMount() {
-    this.props.investor && this.props.setFormDataForEdit(this.props.investor)
+    this.props.investor && this.props.setFormDataForEditInv(this.props.investor)
   }
 
   componentDidUpdate(prevProps) {
