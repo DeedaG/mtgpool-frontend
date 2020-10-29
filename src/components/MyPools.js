@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-
 import { Link } from 'react-router-dom'
 
 class MyPools extends React.Component {
@@ -35,34 +34,41 @@ render() {
     const pooltblHd =
     <thead>
       <tr>
+        <th>Id</th>
+        &nbsp;
         <th>Pool Name</th>
+        &nbsp;
         <th>Pool Amount</th>
       </tr>
     </thead>
 
       const allPoolCards = this.props.pools.length > 0 ? this.props.pools.map(p =>
-        <table key = {p.id}><>
+        <table className="poolName" key = {p.id}><>
           {pooltblHd}
           <tbody>
             <tr>
+              <td>{p.id}</td>
+              &nbsp;
               <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
+              &nbsp;
               <td>${p.attributes.pool_amount.toFixed(2)}</td>
             </tr>
           </tbody>
-      <br></br><br></br></></table>) : null
+      <br></br></></table>) : null
 
       const greaterPools = this.props.pools.filter(p =>
         p.attributes.pool_amount > this.state.compareNumber
       ).map(p =>
-        <table key = {p.id}><>
+        <table className="poolName" key = {p.id}><>
           {pooltblHd}
           <tbody>
             <tr>
               <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
+              &nbsp;
               <td>${p.attributes.pool_amount.toFixed(2)}</td>
             </tr>
           </tbody>
-      <br></br><br></br></></table>)
+      <br></br></></table>)
 
 
       const abcPools = [...this.props.pools].sort(function(a, b) {
@@ -76,7 +82,7 @@ render() {
         }
         return 0;
       }).map(p =>
-        <table key = {p.id}><>
+        <table className="poolName" key = {p.id}><>
           {pooltblHd}
           <tbody>
             <tr>
@@ -84,7 +90,7 @@ render() {
               <td>${p.attributes.pool_amount.toFixed(2)}</td>
             </tr>
           </tbody>
-      <br></br><br></br></></table>)
+      <br></br></></table>)
 
 
       const abcGreaterPools = [...this.props.pools].filter(p =>
@@ -100,7 +106,7 @@ render() {
         }
         return 0;
       }).map(p =>
-        <table key = {p.id}><>
+        <table className="poolName" key = {p.id}><>
           {pooltblHd}
           <tbody>
             <tr>
@@ -108,13 +114,13 @@ render() {
               <td>${p.attributes.pool_amount.toFixed(2)}</td>
             </tr>
           </tbody>
-      <br></br><br></br></></table>)
+      <br></br></></table>)
 
 
       return (
           <div>
             <h3><label>Current Pools</label></h3>
-            <p className="poolName">
+            <p>
               {this.state.compareNumber > 0 && this.state.displaySorted ? abcGreaterPools
                 : (this.state.displaySorted ? abcPools
                   : (this.state.compareNumber > 0 ? greaterPools : allPoolCards))}</p>
