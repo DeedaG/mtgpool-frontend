@@ -3,15 +3,29 @@ import { Link } from 'react-router-dom'
 // import Comment from './Comment.js'
 
 
-const PoolCard = ({pool, investors}) => {
+const PoolCard = ({pool, investor}) => {
 
   return (
     pool ?
     <div>
-      Pool Name:<p style={{color: "black"}} className="poolName">{pool.attributes.name}</p>
-    Pool Amount: <p style={{color: "black"}} className="poolName">${pool.attributes.pool_amount.toFixed(2)}</p>
-    Investor: <p style={{color: "black"}} className="poolName">{pool.attributes.investor_id}</p>
-  Commited Loan Amounts:
+      <h3><table className="pools">
+        <thead>
+          <tr>
+            <th>Pool Name</th>
+            <th>Pool Amount</th>
+            <th>Investor</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>{pool.attributes.name}</td>
+            <td>${pool.attributes.pool_amount.toFixed(2)}</td>
+            <td>{investor ? investor.attributes.name : null}</td>
+          </tr>
+        </tbody>
+      </table></h3>
+
+  <h3>Commited Loan Amounts:</h3>
           <table style={{color: "black"}} className="pools">
             <thead>
               <tr>
@@ -40,7 +54,5 @@ const PoolCard = ({pool, investors}) => {
     null
   )
 }
-
-
 
 export default (PoolCard);
