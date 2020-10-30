@@ -1,3 +1,9 @@
+.App {
+  background-color: darkgreen;
+  /* background-color: #282c34; */
+  color: tan;
+  min-height: 100vh;
+}
 
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
@@ -19,6 +25,25 @@
 .App-link {
   color: #61dafb;
 }
+
+.App {
+  text-align: center;
+  background-image: url("https://cdn.vox-cdn.com/thumbor/z8CNaf1y9dNAtx7YDOnCPGrQSPI=/0x0:6714x3944/1200x800/filters:focal(2580x771:3654x1845)/cdn.vox-cdn.com/uploads/chorus_image/image/59380133/shutterstock_555325381.0.jpg");
+  background-size:cover;
+  /* background-repeat: no-repeat; */
+  padding: 80px;
+  color: white;
+  min-height: 100vh;
+}
+
+a {
+  color: black;
+}
+
+a.active {
+  color: darkblue;
+}
+
 
 @keyframes App-logo-spin {
   from {
@@ -54,41 +79,9 @@
   background-color: red;
 }
 
-.NavBar {
-  /* background-color: silver; */
-  background-position: center;
-  font-size: calc(10px + 2vmin);
-  min-height: 10vh;
-  width: 33%;
-  margin-left: 33%;
-  margin-right: 33%;
-}
-
-.App {
-  background-color: darkgreen;
-  /* background-color: #282c34; */
-  color: tan;
-  min-height: 100vh;
-}
-
-.poolName {
-  background: silver;
-  width: 33%;
-  margin-left: 33%;
-  margin-right: 33%;
-  border-style: solid;
-  color: black;
-  background-position: center;
-}
-
-.pools {
-  background: silver;
-  width: 33%;
-  margin-left: 33%;
-  margin-right: 33%;
-  border-style: solid;
-  color: black;
-  background-position: center;
+.checkbox {
+  text-align: center;
+  padding: 8px;
 }
 
 .investors {
@@ -117,20 +110,32 @@
   padding-right: 30px;
 }
 
-.App {
-  text-align: center;
-  background-image: url("https://cdn.vox-cdn.com/thumbor/z8CNaf1y9dNAtx7YDOnCPGrQSPI=/0x0:6714x3944/1200x800/filters:focal(2580x771:3654x1845)/cdn.vox-cdn.com/uploads/chorus_image/image/59380133/shutterstock_555325381.0.jpg");
-  background-size:cover;
-  /* background-repeat: no-repeat; */
-  padding: 80px;
-  color: white;
-  min-height: 100vh;
+.NavBar {
+  /* background-color: silver; */
+  background-position: center;
+  font-size: calc(10px + 2vmin);
+  min-height: 10vh;
+  width: 33%;
+  margin-left: 33%;
+  margin-right: 33%;
 }
 
-a {
+.poolName {
+  background: silver;
+  width: 33%;
+  margin-left: 33%;
+  margin-right: 33%;
+  border-style: solid;
   color: black;
+  background-position: center;
 }
 
-a.active {
-  color: darkblue;
+.pools {
+  background: silver;
+  width: 33%;
+  margin-left: 33%;
+  margin-right: 33%;
+  border-style: solid;
+  color: black;
+  background-position: center;
 }
