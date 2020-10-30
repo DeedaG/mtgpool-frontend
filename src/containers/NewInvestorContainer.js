@@ -13,9 +13,9 @@ const NewInvestorContainer = ({ history, createInvestor }) => {
   }
 
   return <>
-      <MyInvestors history={history}/>
-      <br/>
       <NewInvestorForm history={history} handleSubmit={handleSubmit} />
+      <br/>
+      <MyInvestors history={history}/>
     </>
 };
 
