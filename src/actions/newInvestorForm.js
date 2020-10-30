@@ -17,7 +17,7 @@ export const  resetNewInvestorForm = () => {
 export const setFormDataForEditInv = investor => {
 console.log("investor", investor)
   const investorFormData = {
-    id: investor.attributes.id,
+    id: investor.id,
     name: investor.attributes.name,
     fee: investor.attributes.fee
   }
