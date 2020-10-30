@@ -9,6 +9,10 @@ class LoanCheckbox extends React.Component {
     checkedLoans: []
   }
 
+  numberWithCommas(x) {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   handleChangedLoans(e, value){
     console.log("target =", e.target.checked)
     console.log("state is", this.state)
@@ -27,28 +31,7 @@ class LoanCheckbox extends React.Component {
         checkedLoans : []
       })
    }
-
  }
-
-
-
-  // handleChangedLoans = (event) => {
-  //   this.setState({
-  //     loan: {
-  //     ...this.state.loan,
-  //         id: event.target.value
-  //       }
-  //     })
-  //   this.setState(state => {
-  //     const checkedLoans = state.checkedLoans.concat(state.loan);
-  //   return {
-  //     checkedLoans
-  //     }
-  //   })
-  //   this.props.updateNewPoolForm("loans", this.state.checkedLoans)
-  //   // this.props.updateLoansInPool("loans", this.state.checkedLoans)
-  // }
-
 
   render() {
 
@@ -60,7 +43,7 @@ class LoanCheckbox extends React.Component {
        name="loans"
        type="checkbox"
        onClick={(e)=>this.handleChangedLoans(e,loan)}
-      />{loan.attributes.amount}<br></br></></li>)}
+      />{this.numberWithCommas(loan.attributes.amount.toFixed(2))}<br></br></></li>)}
       </div>
      )
     }
