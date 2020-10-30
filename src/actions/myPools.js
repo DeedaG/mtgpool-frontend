@@ -65,9 +65,16 @@ export const getMyPools = () => {
 export const createPool = ( poolData, history, userId ) => {
   return dispatch => {
     console.log(poolData)
+
+    const numberWithCommas = (x) => {
+      return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    }
+
+    const poolAmount = numberWithCommas(poolData.pool_amount)
+
     const sendablePoolData = {
         name: poolData.name,
-        pool_amount: poolData.pool_amount,
+        pool_amount: poolAmount,
         investor_id: poolData.investor_id,
         user_id: poolData.userId,
         loans: poolData.loans
