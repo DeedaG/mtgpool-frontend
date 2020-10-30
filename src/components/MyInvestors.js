@@ -34,6 +34,7 @@ class MyInvestors extends React.Component {
   return (
       <div>
         <button className ="button2 ">{newInv}</button>
+        <br></br><br></br>
         {investorCards}
       </div>
   )
