@@ -5,6 +5,10 @@ import { Link } from 'react-router-dom'
 
 const PoolCard = ({pool, investor}) => {
 
+  const numberWithCommas = (x) => {
+    return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+  }
+
   return (
     pool ?
     <div>
@@ -19,7 +23,7 @@ const PoolCard = ({pool, investor}) => {
         <tbody>
           <tr>
             <td>{pool.attributes.name}</td>
-            <td>${pool.attributes.pool_amount.toFixed(2)}</td>
+            <td>${numberWithCommas(pool.attributes.pool_amount.toFixed(2))}</td>
             <td>
               { investor ?
                 <Link to ={`/investors/${investor.id}/edit`} style={{color: "green"}}>
@@ -46,7 +50,7 @@ const PoolCard = ({pool, investor}) => {
               <tr key={loan.id}>
                 <td>{loan.id}</td>
                 <td>{loan.borrower}</td>
-                <td>${loan.amount.toFixed(2)}</td>
+                <td>${numberWithCommas(loan.amount.toFixed(2))}</td>
                 <td>{loan.rate}%</td>
                 <td>{loan.term}yr</td>
               </tr>))}
@@ -55,7 +59,7 @@ const PoolCard = ({pool, investor}) => {
         <br></br>
         <Link className="button3" to={`/pools/${pool.id}/edit`} >Edit this pool</Link><br></br>
         <br></br>
-        <Link className="button1" to={`/loans`}>Browse More Loans</Link><br></br><br></br>
+        <Link className="button2" to={`/loans`}>Browse More Loans</Link><br></br><br></br>
     </div> :
     null
   )
