@@ -2,6 +2,7 @@ import React from 'react'
 import { updateNewPoolForm } from '../actions/newPoolForm.js'
 import { connect } from 'react-redux'
 import LoanCheckbox from './LoanCheckbox.js'
+import InvestorCheckbox from './InvestorCheckbox.js'
 
 
 const NewPoolForm = ({ formData, updateNewPoolForm, userId, handleSubmit, editMode }) => {
@@ -11,7 +12,7 @@ const NewPoolForm = ({ formData, updateNewPoolForm, userId, handleSubmit, editMo
     const { name, value } = event.target
     updateNewPoolForm(name,value)
   }
-
+debugger
   return (
 
     <form onSubmit = {event => {
@@ -31,23 +32,17 @@ const NewPoolForm = ({ formData, updateNewPoolForm, userId, handleSubmit, editMo
         value={pool_amount}
       /><br/>
       <label>Choose Investor:</label><br/>
-      <select
-        onChange={handleChange}
-        placeholder="investor"
-        name="investor_id">
-          <option value={1}>Fancy Bank</option>
-          <option value={2}>Slick Investor</option>
-          <option value={3}>Investor</option>
-          <option value={4}>MoneyTree</option>
-        >
-      </select>
-        <br></br>
-        <LoanCheckbox />
-          <input
-            className={editMode ? "button3" : "button2"}
-            type="submit"
-            value={editMode ? "Update Pool" : "Create Pool"}
-          />
+      <InvestorCheckbox/>
+      <br></br>
+      <label>Choose Loans:</label><br/>
+      <LoanCheckbox/>
+      <br></br>
+        <input
+          style={{height:"50px", width:"125px"}}
+          className={editMode ? "button3" : "button2"}
+          type="submit"
+          value={editMode ? "Update Pool" : "Create Pool"}
+        />
       </form>
   )};
 
