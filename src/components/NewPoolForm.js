@@ -12,7 +12,7 @@ const NewPoolForm = ({ formData, updateNewPoolForm, userId, handleSubmit, editMo
     const { name, value } = event.target
     updateNewPoolForm(name,value)
   }
-debugger
+
   return (
 
     <form onSubmit = {event => {
