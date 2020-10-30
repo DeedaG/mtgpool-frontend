@@ -6,18 +6,26 @@ import { Link } from 'react-router-dom'
 
 const MyLoans = ({loans, pools}) => {
 
+  const loanPool = pools.length > 0 ? pools.map(p =>
+    <td>
+      <Link to ={`/pools/${p.id}`} key={p.attributes.id} style={{color: "green"}}>
+        {p.attributes.name}
+      </Link>
+    </td>) : null
+
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
   }
 
   const loanCards =  loans.length > 0 ? loans.map(loan =>
-    <table className="pools" key = {loan.id}>
+    <table className="loans" key = {loan.id}>
       <thead>
         <tr>
-          <th>Borrower Name</th>
-          <th>Loan Amount</th>
-          <th>Interest Rate</th>
-          <th>Term</th>
+          <th className="loanTextLeft">Borrower Name</th>
+          <th className="loanTextLeft">Loan Amount</th>
+          <th className="loanTextLeft">Interest Rate</th>
+          <th className="loanTextLeft">Term</th>
+          <th className="loanTextRight">Pool</th>
         </tr>
       </thead>
       <tbody>
@@ -29,13 +37,15 @@ const MyLoans = ({loans, pools}) => {
           <td>${numberWithCommas(loan.attributes.amount.toFixed(2))}</td>
           <td>{loan.attributes.rate}%</td>
           <td>{loan.attributes.term}yr</td>
+          <td>{loanPool ?
+              loanPool.filter(p => p.props.children.key === loan.attributes.pool_id.toString()).length > 0
+              ? loanPool.filter(p => p.props.children.key === loan.attributes.pool_id.toString())
+              : "not committed"
+                : null}
+          </td>
         </tr>
       </tbody>
-    </table>
-        //   Pool: {pools.filter(pool => pool.attributes.id === loan.attributes.pool_id).map(p => p.attributes.name)}
-        // </Link><br></br><br></br></></li>
-      )
-        : null
+    </table>): null
 
   return (
     loanCards
