@@ -110,6 +110,33 @@ a.active {
   padding-right: 30px;
 }
 
+.loanTextLeft {
+  text-align: left;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+
+.loanTextCenter {
+  text-align: right;
+  padding-left: 20px;
+}
+
+.loanTextRight {
+  text-align: right;
+  padding-right: 50px;
+  padding-left: 50px;
+}
+
+.loans {
+  background: silver;
+  width: 80%;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-style: solid;
+  color: black;
+  background-position: center;
+}
+
 .NavBar {
   /* background-color: silver; */
   background-position: center;
