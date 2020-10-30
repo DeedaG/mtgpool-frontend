@@ -33,7 +33,7 @@ class InvestorCheckbox extends React.Component {
  }
 
   render() {
-debugger
+// debugger
   return (
     <div className="investors" >
      {this.props.investors.map((investor) =>
