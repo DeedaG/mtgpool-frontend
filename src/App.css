@@ -48,6 +48,12 @@
   background-color: gold;
 }
 
+.button4 {
+  background-color: silver;
+  padding: 5px;
+  background-color: red;
+}
+
 .NavBar {
   /* background-color: silver; */
   background-position: center;
