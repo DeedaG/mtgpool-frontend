@@ -29,6 +29,10 @@ class MyPools extends React.Component {
       })
     }
 
+    numberWithCommas(x) {
+      return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
+    }
+
 render() {
 
     const pooltblHd =
@@ -51,7 +55,7 @@ render() {
               &nbsp;
               <td><Link to ={`/pools/${p.id}`} style={{color: "green"}}>{p.attributes.name}</Link></td>
               &nbsp;
-              <td>${p.attributes.pool_amount.toFixed(2)}</td>
+              <td>${this.numberWithCommas(p.attributes.pool_amount.toFixed(2))}</td>
             </tr>
           </tbody>
       <br></br></></table>) : null
@@ -65,7 +69,7 @@ render() {
             <tr>
               <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
               &nbsp;
-              <td>${p.attributes.pool_amount.toFixed(2)}</td>
+              <td>${this.numberWithCommas(p.attributes.pool_amount.toFixed(2))}</td>
             </tr>
           </tbody>
       <br></br></></table>)
@@ -87,7 +91,7 @@ render() {
           <tbody>
             <tr>
               <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
-              <td>${p.attributes.pool_amount.toFixed(2)}</td>
+              <td>${this.numberWithCommas(p.attributes.pool_amount.toFixed(2))}</td>
             </tr>
           </tbody>
       <br></br></></table>)
@@ -111,7 +115,7 @@ render() {
           <tbody>
             <tr>
               <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
-              <td>${p.attributes.pool_amount.toFixed(2)}</td>
+              <td>${this.numberWithCommas(p.attributes.pool_amount.toFixed(2))}</td>
             </tr>
           </tbody>
       <br></br></></table>)
