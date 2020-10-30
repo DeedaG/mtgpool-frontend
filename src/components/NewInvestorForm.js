@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateNewInvestorForm } from '../actions/newInvestorForm.js'
+import InvestorAlert from './InvestorAlert.js'
 
 class NewInvestorForm extends React.Component {
 
@@ -27,35 +28,40 @@ class NewInvestorForm extends React.Component {
   }
 
   handleInvSubmit = (event) => {
+    // if (this.state.formData.name === "")
+    // this.props.show();
+    // else
     event.preventDefault();
     this.props.handleSubmit(this.state.formData);
   }
 
   render() {
-    // console.log("this.state.formData", this.state.formData)
+    // debugger
+    console.log("this.state.formData", this.state.formData)
   return (
       <form onSubmit={this.handleInvSubmit}>
         <br></br>
         <input
-          placeholder="Investor Name"
+          required
+          placeholder={this.props.editMode ? this.props.formData.name : "Investor Name"}
           type="text"
           name="name"
           onChange={this.handleChange}
-          value={this.state.formData.name}
+          defaultValue={this.props.editMode ? this.state.formData.name : this.props.formData.name}
         /><br/>
         <input
-          placeholder="Investor Fee"
+          required
+          placeholder={this.props.editMode ?  this.props.formData.fee : "Investor Fee"}
           type="integer"
           name="fee"
           onChange={this.handleChange}
-          value={this.state.formData.fee}
+          defaultValue={this.props.editMode ? this.state.formData.fee : this.props.formData.fee}
         /><br/>
         <input
-          className="button2"
+          className={this.props.editMode ? "button3" : "button2"}
           type="submit"
-          value={this.editMode ? "Update Investor" : "Create Investor"}
+          value={this.props.editMode ? "Update Investor" : "Create Investor"}
         />
-
         <br/>
       </form>
   )
