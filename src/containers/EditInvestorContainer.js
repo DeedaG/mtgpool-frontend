@@ -34,7 +34,9 @@ class EditInvestorContainer extends React.Component {
     return <>
         <NewInvestorForm editMode handleSubmit={this.handleSubmit} />
         <br/>
-        <button className="button4" onClick={()=>deleteInvestor(investorId, history)}>Delete Investor</button>
+        <button className="button4" onClick={()=>{deleteInvestor(investorId, history);
+          window.location.assign(`/investors`)}}>Delete Investor
+        </button>
       </>
 
   }

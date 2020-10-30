@@ -1,7 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { updateNewInvestorForm } from '../actions/newInvestorForm.js'
-import InvestorAlert from './InvestorAlert.js'
 
 class NewInvestorForm extends React.Component {
 
