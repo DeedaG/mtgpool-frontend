@@ -14,7 +14,6 @@ export default (state=initialState, action) => {
       return initialState
     case "SET_FORM_DATA_FOR_EDITINV":
         return action.investorFormData
-debugger
     default:
       return state
   }
