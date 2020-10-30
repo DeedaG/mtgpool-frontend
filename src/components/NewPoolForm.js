@@ -44,7 +44,7 @@ const NewPoolForm = ({ formData, updateNewPoolForm, userId, handleSubmit, editMo
         <br></br>
         <LoanCheckbox />
           <input
-            className="button2"
+            className={editMode ? "button3" : "button2"}
             type="submit"
             value={editMode ? "Update Pool" : "Create Pool"}
           />
