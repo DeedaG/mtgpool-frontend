@@ -71,6 +71,7 @@ export const login = (info, history) => {
           dispatch(setCurrentUser(response.data))
           dispatch(resetSignupForm())
           history.push('/')
+          dispatch(login(credentials, history))
         }
       })
       .catch(console.log)

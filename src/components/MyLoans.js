@@ -37,7 +37,7 @@ const MyLoans = ({loans, pools}) => {
           <td>${numberWithCommas(loan.attributes.amount.toFixed(2))}</td>
           <td>{loan.attributes.rate}%</td>
           <td>{loan.attributes.term}yr</td>
-          <td>{loanPool ?
+          <td>{loanPool && loan.attributes.pool_id?
               loanPool.filter(p => p.props.children.key === loan.attributes.pool_id.toString()).length > 0
               ? loanPool.filter(p => p.props.children.key === loan.attributes.pool_id.toString())
               : "not committed"

@@ -59,7 +59,7 @@ const PoolCard = ({pool, investor}) => {
         <br></br>
         <Link className="button3" to={`/pools/${pool.id}/edit`} >Edit this pool</Link><br></br>
         <br></br>
-        <Link className="button2" to={`/loans`}>Browse More Loans</Link><br></br><br></br>
+        <Link className="button1" to={`/loans`}>Browse More Loans</Link><br></br><br></br>
     </div> :
     null
   )

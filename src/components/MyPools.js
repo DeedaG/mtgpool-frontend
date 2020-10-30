@@ -69,7 +69,7 @@ render() {
             <tr>
               <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
               &nbsp;
-              <td>${this.numberWithCommas(p.attributes.pool_amount.toFixed(2))}</td>
+              <td>${p.attributes.pool_amount.toFixed(2)}</td>
             </tr>
           </tbody>
       <br></br></></table>)
@@ -91,7 +91,7 @@ render() {
           <tbody>
             <tr>
               <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
-              <td>${this.numberWithCommas(p.attributes.pool_amount.toFixed(2))}</td>
+              <td>${p.attributes.pool_amount.toFixed(2)}</td>
             </tr>
           </tbody>
       <br></br></></table>)
@@ -115,7 +115,7 @@ render() {
           <tbody>
             <tr>
               <td><Link to ={`/pools/${p.id}`}>{p.attributes.name}</Link></td>
-              <td>${this.numberWithCommas(p.attributes.pool_amount.toFixed(2))}</td>
+              <td>${p.attributes.pool_amount.toFixed(2)}</td>
             </tr>
           </tbody>
       <br></br></></table>)
