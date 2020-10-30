@@ -26,6 +26,7 @@ class EditInvestorContainer extends React.Component {
       investorId: investor.id,
       ...formData
     }, history)
+    window.location.assign(`/investors/investorId`);
   }
   render() {
     const { history, investor, deleteInvestor } = this.props
@@ -33,7 +34,7 @@ class EditInvestorContainer extends React.Component {
     return <>
         <NewInvestorForm editMode handleSubmit={this.handleSubmit} />
         <br/>
-        <button style={{color:"red"}} onClick={()=>deleteInvestor(investorId, history)}>Delete Investor</button>
+        <button className="button4" onClick={()=>deleteInvestor(investorId, history)}>Delete Investor</button>
       </>
 
   }
