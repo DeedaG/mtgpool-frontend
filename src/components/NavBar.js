@@ -12,6 +12,8 @@ import Logout from './Logout.js'
         <NavLink exact activeClassName="active" to="/pools/new">New Pool</NavLink>
         &nbsp;
         <NavLink exact activeClassName="active" to="/investors">Investors</NavLink>
+          &nbsp;
+          <NavLink exact activeClassName="active" to="/loans">Loans</NavLink>
         { loggedIn ? <Logout /> : null}
     </div>
     )
