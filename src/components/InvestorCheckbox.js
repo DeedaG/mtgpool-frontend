@@ -16,12 +16,10 @@ class InvestorCheckbox extends React.Component {
     console.log("target =", e.target.checked)
     console.log("state is", this.state)
     if (e.target.checked){
-      //append to array
       this.setState({
         checkedInvestor: value
         },
         function () {
-          // console.log(this.state.checkedLoans);
           this.props.updateNewPoolForm("investor_id", this.state.checkedInvestor)
         })
 
