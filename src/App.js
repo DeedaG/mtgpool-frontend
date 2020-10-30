@@ -23,7 +23,6 @@ class App extends React.Component {
     this.props.getCurrentUser()
     }
 
-
   render() {
     const { loggedIn, pools, loans, investors } = this.props
     return (
