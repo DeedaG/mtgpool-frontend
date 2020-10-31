@@ -80,8 +80,16 @@ a.active {
 }
 
 .checkbox {
-  text-align: center;
-  padding: 8px;
+  /* text-align: center;
+  padding: 8px; */
+  background: silver;
+  width: 33%;
+  margin-left: 33%;
+  margin-right: 33%;
+  border-style: solid;
+  color: black;
+  background-position: center;
+  border-color:  #666666;
 }
 
 .investors {
