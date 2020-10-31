@@ -33,12 +33,12 @@ class InvestorCheckbox extends React.Component {
   render() {
 // debugger
   return (
-    <div className="investors" >
+    <div className="checkbox" >
      {this.props.investors.map((investor) =>
        <table key={investor.id}><>
         <tbody>
           <tr>
-            <td className="checkbox">
+            <td >
              <input
              name="investor_id"
              type="checkbox"
