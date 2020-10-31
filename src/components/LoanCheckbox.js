@@ -34,19 +34,24 @@ class LoanCheckbox extends React.Component {
  }
 
   render() {
-
   return (
-    <div className="pools">
-     {this.props.loans.map((loan, index) =>
+    <div className="checkbox">
+     {this.props.loans.map((loan) =>
        <table key = {loan.id}><>
          <tbody>
            <tr>
-             <td className="checkbox">
+             <td >
               <input
                 name="loans"
                 type="checkbox"
                 onClick={(e)=>this.handleChangedLoans(e,loan)}
-               />{this.numberWithCommas(loan.attributes.amount.toFixed(2))}<br></br>
+               />${this.numberWithCommas(loan.attributes.amount.toFixed(2))}, &nbsp;{loan.attributes.rate}%,
+                &nbsp;{loan.attributes.term}yr, &nbsp;{loan.attributes.pool_id ?
+                  <span style={{color: "red"}}>Committed
+                    <span style={{color: "black"}}> Pool {loan.attributes.pool_id}</span>
+                  </span>
+                  :
+                  <span style={{color: "green"}}>Available</span>}<br></br>
              </td>
            </tr>
           </tbody>
