@@ -31,10 +31,9 @@ const NewPoolForm = ({ formData, updateNewPoolForm, userId, handleSubmit, editMo
         onChange={handleChange}
         value={pool_amount}
       /><br/>
-      <label>Choose Investor:</label><br/>
+    <label><h4>Choose Investor:</h4></label>
       <InvestorCheckbox/>
-      <br></br>
-      <label>Choose Loans:</label><br/>
+      <label><h4>Choose Loans:</h4></label>
       <LoanCheckbox/>
       <br></br>
         <input

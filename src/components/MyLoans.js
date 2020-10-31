@@ -40,7 +40,7 @@ const MyLoans = ({loans, pools}) => {
           <td>{loanPool && loan.attributes.pool_id?
               loanPool.filter(p => p.props.children.key === loan.attributes.pool_id.toString()).length > 0
               ? loanPool.filter(p => p.props.children.key === loan.attributes.pool_id.toString())
-              : "not committed"
+              : <span style={{color: "red", float: "left"}}>Not Committed</span>
                 : null}
           </td>
         </tr>
