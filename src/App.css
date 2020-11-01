@@ -118,6 +118,16 @@ a.active {
   padding-right: 30px;
 }
 
+.loan {
+  background: silver;
+  width: 33%;
+  margin-left: 33%;
+  margin-right: 33%;
+  border-style: solid;
+  color: black;
+  background-position: center;
+}
+
 .loanTextLeft {
   text-align: left;
   padding-right: 30px;
