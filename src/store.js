@@ -6,6 +6,7 @@ import loginForm from './reducers/loginForm.js'
 import myPools from './reducers/myPools.js'
 import newPoolForm from './reducers/newPoolForm.js'
 import newInvestorForm from './reducers/newInvestorForm.js'
+import newLoanForm from './reducers/newLoanForm.js'
 import loans from './reducers/loans.js'
 import investors from './reducers/investors.js'
 import signupForm from './reducers/signupForm.js'
@@ -19,6 +20,7 @@ const reducer = combineReducers({
   myPools,
   newInvestorForm,
   newPoolForm,
+  newLoanForm,
   loans
 })
 
