@@ -6,7 +6,9 @@ import { Link } from 'react-router-dom'
 
 const MyLoans = ({loans, pools}) => {
 
-  const loanPool = pools.length > 0 ? pools.map(p =>
+  const addLoan = <Link to ={`/loans/new`}>Add Loans</Link>
+
+  const poolLink = pools.length > 0 ? pools.map(p =>
     <td>
       <Link to ={`/pools/${p.id}`} key={p.attributes.id} style={{color: "green"}}>
         {p.attributes.name}
@@ -37,18 +39,25 @@ const MyLoans = ({loans, pools}) => {
           <td>${numberWithCommas(loan.attributes.amount.toFixed(2))}</td>
           <td>{loan.attributes.rate}%</td>
           <td>{loan.attributes.term}yr</td>
-          <td>{loanPool && loan.attributes.pool_id?
-              loanPool.filter(p => p.props.children.key === loan.attributes.pool_id.toString()).length > 0
-              ? loanPool.filter(p => p.props.children.key === loan.attributes.pool_id.toString())
-              : <span style={{color: "red", float: "left"}}>Not Committed</span>
-                : null}
+          <td>{poolLink ?
+              (loan.attributes.pool_id ?
+                (poolLink.filter(p => p.props.children.key === loan.attributes.pool_id
+                  .toString()).length > 0 ?
+                poolLink.filter(p => p.props.children.key === loan.attributes.pool_id.toString())
+                : <span style={{color: "red", float: "left"}}>Not Committed</span>)
+                  : <span style={{color: "red", float: "left"}}>Not Committed</span>)
+                    : null}
           </td>
         </tr>
       </tbody>
     </table>): null
 
   return (
-    loanCards
+    <div>
+      <button className ="button2 ">{addLoan}</button>
+      <br></br><br></br>
+      {loanCards}
+    </div>
   )
 }
 
