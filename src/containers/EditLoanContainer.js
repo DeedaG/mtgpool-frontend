@@ -32,7 +32,7 @@ class EditLoanContainer extends React.Component {
     const { history, loan, deleteLoan } = this.props
     const loanId = loan ? loan.id : null
     return <>
-        <NewLoanForm editMode handleSubmit={this.handleSubmit} />
+        <AddLoans editMode handleSubmit={this.handleSubmit} />
         <br/>
         <button className="button4" onClick={()=>{deleteLoan(loanId, history);
           window.location.assign(`/loans`)}}>Delete Loan
