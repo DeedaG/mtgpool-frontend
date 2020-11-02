@@ -17,7 +17,7 @@ export default (state=initialState, action) => {
     case 'RESET_NEW_LOAN_FORM':
       return initialState
     case "SET_FORM_DATA_FOR_EDITLN":
-        return action.investorFormData
+        return action.loanFormData
     default:
       return state
   }
