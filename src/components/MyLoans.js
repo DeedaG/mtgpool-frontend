@@ -33,7 +33,7 @@ const MyLoans = ({loans, pools}) => {
       <tbody>
         <tr>
           <td>
-            <Link to ={`/loans/${loan.id}/edit`} key={loan.attributes.id} style={{color: "green"}}>
+            <Link to ={`/loans/${loan.id}`} key={loan.attributes.id} style={{color: "green"}}>
               {loan.attributes.borrower}
             </Link></td>
           <td>${numberWithCommas(loan.attributes.amount.toFixed(2))}</td>
