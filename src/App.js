@@ -14,6 +14,7 @@ import Home from './components/Home.js'
 import NewInvestorContainer from './containers/NewInvestorContainer.js'
 import EditPoolContainer from './containers/EditPoolContainer.js'
 import EditInvestorContainer from './containers/EditInvestorContainer.js'
+import EditLoanContainer from './containers/EditLoanContainer.js'
 import NewPoolContainer from './containers/NewPoolContainer.js'
 import NewLoanContainer from './containers/NewLoanContainer.js'
 import { Route, Switch, withRouter } from 'react-router-dom'
@@ -48,9 +49,14 @@ class App extends React.Component {
           }/>
           <Route exact path='/loans' component={MyLoans}/>
           <Route exact path='/loans/new' component={NewLoanContainer}/>
+            <Route exact path='/loans/:id' render={props => {
+                const loan = loans.find(loan => loan.id === props.match.params.id)
+                  return <LoanCard loan={loan} {...props}/>
+                  }
+                }></Route>
           <Route exact path='/loans/:id/edit' render={props => {
               const loan = loans.find(loan => loan.id === props.match.params.id)
-            return <LoanCard loan={loan} {...props}/>
+            return <EditLoanContainer loan={loan} {...props}/>
               }
             }></Route>
           <Route exact path='/investors' component={MyInvestors}/>
