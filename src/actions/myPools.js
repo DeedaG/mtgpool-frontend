@@ -1,5 +1,4 @@
 import { resetNewPoolForm } from './newPoolForm'
-// import { addLoansToPool } from './loans'
 
 export const setMyPools = pools => {
   return {
@@ -72,7 +71,7 @@ export const createPool = ( poolData, history, userId ) => {
         user_id: poolData.userId,
         loans: poolData.loans
     }
-    debugger
+
     console.log("sendablePoolData", sendablePoolData)
     return fetch('http://localhost:3000/api/v1/pools', {
       credentials: 'include',
