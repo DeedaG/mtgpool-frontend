@@ -5,8 +5,7 @@ import { connect } from 'react-redux'
 
 class LoanCheckbox extends React.Component {
   state = {
-    // loan: "",
-    checkedLoans: []
+    checkedLoans: this.props.checkedLoans
   }
 
   numberWithCommas(x) {
@@ -14,33 +13,30 @@ class LoanCheckbox extends React.Component {
   }
 
   handleChangedLoans(e, value){
-    console.log("target =", e.target.checked)
-    console.log("state is", this.state)
-    if (e.target.checked){
-      //append to array
-      this.setState({
-        checkedLoans: this.state.checkedLoans.concat([value])
-        },
-        function () {
-          // console.log(this.state.checkedLoans);
-          this.props.updateNewPoolForm("loans", this.state.checkedLoans)
+      if (e.target.checked){
+        this.setState({
+          checkedLoans: this.state.checkedLoans.concat([value])
+          },
+          function () {
+            this.props.updateNewPoolForm("loans", this.state.checkedLoans)
+          })
+      } else {
+        this.setState({
+          checkedLoans : this.props.checkedLoans
         })
-
-    } else {
-      this.setState({
-        checkedLoans : []
-      })
+     }
    }
- }
 
   render() {
+    debugger
   return (
     <div className="checkbox">
-     {this.props.loans.map((loan) =>
+     {this.props.loans.filter(l => l.attributes.pool_id < 1)
+       .map((loan) =>
        <table key = {loan.id}><>
          <tbody>
            <tr>
-             <td >
+             <td>
               <input
                 name="loans"
                 type="checkbox"
@@ -56,16 +52,26 @@ class LoanCheckbox extends React.Component {
            </tr>
           </tbody>
         </></table>)}
+        <p>Current pool total: ${this.numberWithCommas(this.props.total.toFixed(2))}</p>
       </div>
      )
     }
   }
 
   const mapStateToProps = state => {
-     // debugger
+
+    const myFunc = (total, num) => {
+     return total + num;
+   }
+
+    const total = state.newPoolForm.loans ?
+    state.newPoolForm.loans.map(l => l.amount).reduce(myFunc, 0) : 0
+
     return {
       loans: state.loans,
-      pool: state.newPoolForm
+      pool: state.newPoolForm,
+      checkedLoans: state.newPoolForm.loans,
+      total
     }
   }
 
