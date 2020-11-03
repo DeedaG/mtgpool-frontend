@@ -26,7 +26,7 @@ class EditLoanContainer extends React.Component {
       loanId: loan.id,
       ...formData
     }, history)
-    window.location.assign(`/loans/loanId`);
+    window.location.assign(`/loans/${loan.id}`);
   }
   render() {
     const { history, loan, deleteLoan } = this.props

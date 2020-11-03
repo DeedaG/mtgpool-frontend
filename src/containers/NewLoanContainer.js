@@ -1,7 +1,6 @@
 import React from 'react'
 import { createLoan } from '../actions/loans.js'
 import { connect } from 'react-redux'
-import MyLoans from '../components/MyLoans.js'
 import AddLoans from '../components/AddLoans.js'
 
 const NewLoanContainer = ({ history, createLoan }) => {

@@ -36,52 +36,52 @@ class AddLoans extends React.Component {
   }
 
   render() {
-    console.log("this.state.formData", this.state.formData)
+    // console.log("this.props.formData", this.props.formData)
   return (
-      <form onSubmit={this.handleLoanSubmit}>
+      <form className="checkbox" onSubmit={this.handleLoanSubmit}>
         <br></br>
+        <label>Borrower Name</label>
         <input
-          required
           placeholder={this.props.editMode ? this.props.formData.borrower : "Borrower Name"}
           type="text"
           name="borrower"
           onChange={this.handleChange}
           defaultValue={this.props.editMode ? this.state.formData.borrower : this.props.formData.borrower}
         /><br/>
+        <label>Loan Term</label>
         <input
-          required
           placeholder={this.props.editMode ?  this.props.formData.term : "Loan Term"}
           type="integer"
           name="term"
           onChange={this.handleChange}
           defaultValue={this.props.editMode ? this.state.formData.term : this.props.formData.term}
         /><br/>
+        <label>Loan Amount</label>
         <input
-          required
           placeholder={this.props.editMode ? this.props.formData.amount : "Loan Amount"}
           type="integer"
           name="amount"
           onChange={this.handleChange}
           defaultValue={this.props.editMode ? this.state.formData.amount : this.props.formData.amount}
         /><br/>
+        <label>Interest Rate</label>
         <input
-          required
           placeholder={this.props.editMode ? this.props.formData.rate : "Interest Rate"}
           type="integer"
           name="rate"
           onChange={this.handleChange}
           defaultValue={this.props.editMode ? this.state.formData.rate : this.props.formData.rate}
         /><br/>
+        <label>Pool Id</label>
         <input
-          required
           placeholder={this.props.editMode ? this.props.formData.pool_id : "Pool Id Number"}
           type="integer"
           name="pool_id"
           onChange={this.handleChange}
           defaultValue={this.props.editMode ? this.state.formData.pool_id : "Not Committed"}
         /><br/>
+        <label>Closing Date</label>
         <input
-          required
           placeholder={this.props.editMode ? this.props.formData.close_date : "Closing Date"}
           type="date"
           name="close_date"

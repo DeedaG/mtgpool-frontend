@@ -26,7 +26,7 @@ class EditInvestorContainer extends React.Component {
       investorId: investor.id,
       ...formData
     }, history)
-    window.location.assign(`/investors/investorId`);
+    window.location.assign(`/investors/${investor.id}`);
   }
   render() {
     const { history, investor, deleteInvestor } = this.props
@@ -38,7 +38,6 @@ class EditInvestorContainer extends React.Component {
           window.location.assign(`/investors`)}}>Delete Investor
         </button>
       </>
-
   }
 };
 export default connect(null, {updateInvestor, deleteInvestor, setFormDataForEditInv, resetNewInvestorForm })(EditInvestorContainer);

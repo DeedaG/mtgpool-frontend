@@ -1,19 +1,20 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { Link } from 'react-router-dom'
-// import { addLoansToPool } from '../actions/loans.js'
 
 
-const MyLoans = ({loans, pools}) => {
+const MyLoans = ({loans, pools, currentUser}) => {
 
   const addLoan = <Link to ={`/loans/new`}>Add Loans</Link>
 
-  const poolLink = pools.length > 0 ? pools.map(p =>
-    <td>
-      <Link to ={`/pools/${p.id}`} key={p.attributes.id} style={{color: "green"}}>
-        {p.attributes.name}
-      </Link>
-    </td>) : null
+    const findpool = (x) => {
+      return pools.length > 0 ?
+        pools.filter(p =>
+        p.id === x.toString())
+        .map(pl =>
+          <Link key={pl.id} style={{color: "red"}} to ={`/pools/${pl.id}`}>{pl.attributes.name}</Link>)
+            : <span style={{color: "green"}}>Available</span>
+}
 
   const numberWithCommas = (x) => {
     return x.toString().replace(/\B(?<!\.\d*)(?=(\d{3})+(?!\d))/g, ",");
@@ -35,19 +36,15 @@ const MyLoans = ({loans, pools}) => {
           <td>
             <Link to ={`/loans/${loan.id}`} key={loan.attributes.id} style={{color: "green"}}>
               {loan.attributes.borrower}
-            </Link></td>
+            </Link>
+          </td>
           <td>${numberWithCommas(loan.attributes.amount.toFixed(2))}</td>
           <td>{loan.attributes.rate}%</td>
           <td>{loan.attributes.term}yr</td>
-          <td>{poolLink ?
-              (loan.attributes.pool_id ?
-                (poolLink.filter(p => p.props.children.key === loan.attributes.pool_id
-                  .toString()).length > 0 ?
-                poolLink.filter(p => p.props.children.key === loan.attributes.pool_id.toString())
-                : <span style={{color: "red", float: "left"}}>Not Committed</span>)
-                  : <span style={{color: "red", float: "left"}}>Not Committed</span>)
-                    : null}
-          </td>
+          <td>{loan.attributes.pool_id ?
+                findpool(loan.attributes.pool_id)
+                : <span style={{color: "green"}}>Available</span>
+              }</td>
         </tr>
       </tbody>
     </table>): null
@@ -63,6 +60,7 @@ const MyLoans = ({loans, pools}) => {
 
   const mapStateToProps = state => {
     return {
+      currentUser: state.currentUser ? state.currentUser : null,
       loans: state.loans,
       pools: state.myPools
 

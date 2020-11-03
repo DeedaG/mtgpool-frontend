@@ -27,6 +27,7 @@ class App extends React.Component {
 
   render() {
     const { loggedIn, pools, loans, investors } = this.props
+
     return (
       <div className="App">
         { loggedIn ? <NavBar/> : <Home/> }
