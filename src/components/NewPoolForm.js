@@ -33,8 +33,8 @@ const NewPoolForm = ({ formData, updateNewPoolForm, userId, handleSubmit, editMo
       /><br/>
     <label><h4>Choose Investor:</h4></label>
       <InvestorCheckbox/>
-      <label><h4>Choose Loans:</h4></label>
-      <LoanCheckbox/>
+      <label><h4>Available Loans:</h4></label>
+      <LoanCheckbox editMode/>
       <br></br>
         <input
           style={{height:"50px", width:"125px"}}
