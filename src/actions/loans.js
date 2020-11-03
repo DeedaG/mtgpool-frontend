@@ -36,15 +36,6 @@ export const updateLoanSuccess = loan => {
   }
 }
 
-
-// export const addLoansToPool = (loan) => {
-//   return {
-//     type: 'ADD_LOANS_TO_POOL',
-//     payload: loan
-//   })
-// }
-
-
 export const getMyLoans = () => {
   return dispatch => {
     return fetch("http://localhost:3000/api/v1/loans",
@@ -105,10 +96,14 @@ export const updateLoan = ( loanData, history ) => {
     console.log(loanData)
     const sendableLoanData = {
         id: loanData.id,
-        name: loanData.name,
-        fee: loanData.fee
+        borrower: loanData.borrower,
+        term: loanData.term,
+        amount: loanData.amount,
+        rate: loanData.rate,
+        pool_id: loanData.pool_id,
+        close_date: loanData.close_date
     }
-    return fetch(`http://localhost:3000/api/v1/investors/${loanData.id}`, {
+    return fetch(`http://localhost:3000/api/v1/loans/${loanData.id}`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {
@@ -130,7 +125,7 @@ export const updateLoan = ( loanData, history ) => {
 
 export const deleteLoan = (loanId, history) => {
   return dispatch => {
-    return fetch(`http://localhost:3000/api/v1/investors/${loanId}`, {
+    return fetch(`http://localhost:3000/api/v1/loans/${loanId}`, {
       credentials: "include",
       method: "DELETE",
       headers: {
