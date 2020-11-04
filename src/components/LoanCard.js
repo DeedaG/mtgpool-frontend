@@ -14,7 +14,7 @@ const LoanCard = ({loan}) => {
           <h3>Borrower: {loan.attributes.borrower}</h3>
           <h3>Loan Number: {loan.id}</h3>
           <p>Pool Number: {loan.attributes.pool_id > 0 ? loan.attributes.pool_id :
-                <span style={{color: "red"}}>Not Committed</span>}
+                <span style={{color: "green"}}>Available</span>}
             </p>
           <p>Loan Amount: ${numberWithCommas(loan.attributes.amount.toFixed(2))}</p>
           <p>Interest Rate: {loan.attributes.rate}%</p>
