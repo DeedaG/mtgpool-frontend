@@ -120,9 +120,9 @@ a.active {
 
 .loan {
   background: silver;
-  width: 80%;
-  margin-left: 10%;
-  margin-right: 10%;
+  width: 33%;
+  margin-left: 33%;
+  margin-right: 33%;
   border-style: solid;
   color: black;
   background-position: center;
