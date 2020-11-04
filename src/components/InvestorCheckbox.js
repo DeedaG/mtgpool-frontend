@@ -13,8 +13,6 @@ class InvestorCheckbox extends React.Component {
   }
 
   handleChangedInvestor(e, value){
-    console.log("target =", e.target.checked)
-    console.log("state is", this.state)
     if (e.target.checked){
       this.setState({
         checkedInvestor: value
