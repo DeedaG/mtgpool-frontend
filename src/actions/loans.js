@@ -103,7 +103,7 @@ export const updateLoan = ( loanData, history ) => {
         pool_id: loanData.pool_id,
         close_date: loanData.close_date
     }
-    return fetch(`http://localhost:3000/api/v1/loans/${loanData.id}`, {
+    return fetch(`http://localhost:3000/api/v1/loans/${loanData.loanId}`, {
       credentials: 'include',
       method: 'PATCH',
       headers: {
