@@ -33,7 +33,7 @@ class EditPoolContainer extends React.Component {
     return <>
         <NewPoolForm editMode handleSubmit={this.handleSubmit}/>
         <br/>
-        <button className="button4" onClick={()=>deletePool(poolId, history)}>Delete Pool</button>
+        <button className="button4" onClick={()=>deletePool(pool, poolId, history)}>Delete Pool</button>
       </>
 
   }
