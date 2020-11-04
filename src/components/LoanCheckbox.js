@@ -28,7 +28,6 @@ class LoanCheckbox extends React.Component {
    }
 
   render() {
-    debugger
   return (
     <div className="checkbox">
      {this.props.loans.filter(l => l.attributes.pool_id < 1)
@@ -63,14 +62,18 @@ class LoanCheckbox extends React.Component {
     const myFunc = (total, num) => {
      return total + num;
    }
-
-    const total = state.newPoolForm.loans ?
-    state.newPoolForm.loans.map(l => l.amount).reduce(myFunc, 0) : 0
+   console.log("state.newPoolForm)",state.newPoolForm)
+   const checkedLoans = []
+   // debugger
+    const total = state.newPoolForm.loans.length > 0 ?
+    checkedLoans.concat(state.newPoolForm.loans)
+      .map(l => l.amount).reduce(myFunc, 0)
+      : 0
 
     return {
       loans: state.loans,
       pool: state.newPoolForm,
-      checkedLoans: state.newPoolForm.loans,
+      checkedLoans: checkedLoans.concat(state.newPoolForm.loans),
       total
     }
   }
