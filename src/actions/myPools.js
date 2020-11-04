@@ -1,4 +1,5 @@
 import { resetNewPoolForm } from './newPoolForm'
+import  {updateLoan } from './loans.js'
 
 export const setMyPools = pools => {
   return {
@@ -125,7 +126,7 @@ export const updatePool = ( poolData, history ) => {
   }
 }
 
-export const deletePool = (poolId, history) => {
+export const deletePool = (pool, poolId, history) => {
   return dispatch => {
     return fetch(`http://localhost:3000/api/v1/pools/${poolId}`, {
       credentials: "include",
@@ -140,6 +141,9 @@ export const deletePool = (poolId, history) => {
           alert(resp.error)
         } else {
           dispatch(deletePoolSuccess(poolId))
+          console.log("pool", pool)
+          pool.attributes.loans.map(loan => loan.pool_id = "")
+          pool.attributes.loans.map(loan => dispatch(updateLoan(loan, history)))
           history.push(`/pools`)
         }
       })
