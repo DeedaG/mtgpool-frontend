@@ -42,6 +42,7 @@ class AddLoans extends React.Component {
         <br></br>
         <label>Borrower Name</label>
         <input
+          required
           placeholder={this.props.editMode ? this.props.formData.borrower : "Borrower Name"}
           type="text"
           name="borrower"
@@ -50,6 +51,7 @@ class AddLoans extends React.Component {
         /><br/>
         <label>Loan Term</label>
         <input
+          required
           placeholder={this.props.editMode ?  this.props.formData.term : "Loan Term"}
           type="integer"
           name="term"
@@ -58,6 +60,7 @@ class AddLoans extends React.Component {
         /><br/>
         <label>Loan Amount</label>
         <input
+          required
           placeholder={this.props.editMode ? this.props.formData.amount : "Loan Amount"}
           type="integer"
           name="amount"
@@ -66,6 +69,7 @@ class AddLoans extends React.Component {
         /><br/>
         <label>Interest Rate</label>
         <input
+          required
           placeholder={this.props.editMode ? this.props.formData.rate : "Interest Rate"}
           type="integer"
           name="rate"
@@ -82,6 +86,7 @@ class AddLoans extends React.Component {
         /><br/>
         <label>Closing Date</label>
         <input
+          required
           placeholder={this.props.editMode ? this.props.formData.close_date : "Closing Date"}
           type="date"
           name="close_date"

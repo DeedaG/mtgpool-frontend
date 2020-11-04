@@ -27,9 +27,6 @@ class NewInvestorForm extends React.Component {
   }
 
   handleInvSubmit = (event) => {
-    // if (this.state.formData.name === "")
-    // this.props.show();
-    // else
     event.preventDefault();
     this.props.handleSubmit(this.state.formData);
   }
