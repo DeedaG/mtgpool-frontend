@@ -114,6 +114,7 @@ export const updatePool = ( poolData, history ) => {
     })
     .then(r => r.json())
     .then(resp => {
+      console.log("resp", resp)
       if (resp.error) {
         alert(resp.error)
       }else {
