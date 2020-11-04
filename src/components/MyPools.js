@@ -39,9 +39,7 @@ render() {
     <thead>
       <tr>
         <th>Id</th>
-        &nbsp;
         <th>Pool Name</th>
-        &nbsp;
         <th>Pool Amount</th>
       </tr>
     </thead>
@@ -52,13 +50,11 @@ render() {
           <tbody>
             <tr>
               <td>{p.id}</td>
-              &nbsp;
               <td><Link to ={`/pools/${p.id}`} style={{color: "green"}}>{p.attributes.name}</Link></td>
-              &nbsp;
               <td>${this.numberWithCommas(p.attributes.pool_amount.toFixed(2))}</td>
             </tr>
           </tbody>
-      <br></br></></table>) : null
+          </></table>) : null
 
       const greaterPools = this.props.pools.filter(p =>
         p.attributes.pool_amount > this.state.compareNumber
@@ -124,12 +120,12 @@ render() {
       return (
           <div>
             <h3><label>Current Pools</label></h3>
-            <p>
+            <div>
               {this.state.compareNumber > 0 && this.state.displaySorted ? abcGreaterPools
                 : (this.state.displaySorted ? abcPools
-                  : (this.state.compareNumber > 0 ? greaterPools : allPoolCards))}</p>
+                  : (this.state.compareNumber > 0 ? greaterPools : allPoolCards))}</div>
                 <h4><label>Sort Pools</label></h4>
-            <button onClick={this.handleClick}>Sort Alphabetically</button>
+            <button onClick={this.handleClick}>Toggle ABC Sort</button>
 
            <form onSubmit={this.handleSubmit}>
 
