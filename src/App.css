@@ -92,6 +92,11 @@ a.active {
   border-color:  #666666;
 }
 
+.doubleUnderline {
+  text-decoration-line: underline;
+  text-decoration-style: double;
+}
+
 .investors {
   background: silver;
   border-style: solid;

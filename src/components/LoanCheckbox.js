@@ -51,7 +51,16 @@ class LoanCheckbox extends React.Component {
            </tr>
           </tbody>
         </></table>)}
-        <p>Current pool total: ${this.numberWithCommas(this.props.total.toFixed(2))}</p>
+        <p>Current commitment: $
+          <span className="doubleUnderline" >
+            {this.numberWithCommas(this.props.total.toFixed(2))}
+          </span>
+        </p>
+        <p>Outstanding: $
+          <span  style={{color: "red"}}>
+            {this.numberWithCommas(this.props.open.toFixed(2))}
+          </span>
+        </p>
       </div>
      )
     }
@@ -70,11 +79,15 @@ class LoanCheckbox extends React.Component {
       .map(l => l.amount).reduce(myFunc, 0)
       : 0
 
+    const open = total > 0 && state.newPoolForm.pool_amount > 0 ?
+        state.newPoolForm.pool_amount - total : 0
+
     return {
       loans: state.loans,
       pool: state.newPoolForm,
       checkedLoans: checkedLoans.concat(state.newPoolForm.loans),
-      total
+      total,
+      open
     }
   }
 
