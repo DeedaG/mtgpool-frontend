@@ -46,7 +46,7 @@ const PoolCard = ({pool, investor}) => {
                 <th>Term</th>
               </tr>
           </thead>
-            <tbody > {pool.attributes.loans.map((loan) => (
+            <tbody >{pool.attributes.loans.map((loan) => (
               <tr key={loan.id}>
                 <td>{loan.id}</td>
                 <td>{loan.borrower}</td>
