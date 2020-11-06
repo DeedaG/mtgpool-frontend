@@ -52,7 +52,8 @@ class App extends React.Component {
           <Route exact path='/loans/new' component={NewLoanContainer}/>
             <Route exact path='/loans/:id' render={props => {
                 const loan = loans.find(loan => loan.id === props.match.params.id)
-                  return <LoanCard loan={loan} {...props}/>
+                const pool = loan && loan.attributes.pool_id ? pools.find(p => p.id === loan.attributes.pool_id.toString()) : null
+                  return <LoanCard loan={loan} pool={pool} {...props}/>
                   }
                 }></Route>
           <Route exact path='/loans/:id/edit' render={props => {
