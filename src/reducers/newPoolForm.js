@@ -2,7 +2,7 @@ const initialState = {
     name: "",
     pool_amount: "",
     investor_id: "",
-    loans: []
+    loans: ""
 }
 
 export default (state=initialState, action) => {

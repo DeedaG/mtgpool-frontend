@@ -48,7 +48,6 @@ export const getMyInvestors = () => {
     })
       .then(r => r.json())
       .then(response => {
-        console.log("response", response)
         if (response.error) {
           alert(response.error)
         } else {
@@ -61,7 +60,6 @@ export const getMyInvestors = () => {
 
 export const createInvestor = ( investorData, history ) => {
   return dispatch => {
-    console.log(investorData)
     const sendableInvestorData = {
         name: investorData.name,
         fee: investorData.fee
@@ -76,7 +74,6 @@ export const createInvestor = ( investorData, history ) => {
     })
     .then(r => r.json())
     .then(resp => {
-      console.log("resp", resp)
       if (resp.error) {
         alert(resp.error)
       }else {
@@ -90,7 +87,6 @@ export const createInvestor = ( investorData, history ) => {
 
 export const updateInvestor = ( investorData, history ) => {
   return dispatch => {
-    console.log(investorData)
     const sendableInvestorData = {
         id: investorData.id,
         name: investorData.name,

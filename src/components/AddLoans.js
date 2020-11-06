@@ -16,7 +16,7 @@ class AddLoans extends React.Component {
    }
 
   handleChange=(event)=> {
-    event.preventDefault();
+    // event.preventDefault();
     const target = event.target;
     const value = target.value;
     const name = target.name;
@@ -27,16 +27,16 @@ class AddLoans extends React.Component {
      [name]: value
       }
     });
+    console.log("this.state.formData for newLoan", this.state.formData)
     updateNewLoanForm(name,value);
   }
 
   handleLoanSubmit = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     this.props.handleSubmit(this.state.formData);
   }
 
   render() {
-    // console.log("this.props.formData", this.props.formData)
   return (
       <form className="checkbox" onSubmit={this.handleLoanSubmit}>
         <br></br>

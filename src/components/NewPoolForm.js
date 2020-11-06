@@ -5,7 +5,7 @@ import LoanCheckbox from './LoanCheckbox.js'
 import InvestorCheckbox from './InvestorCheckbox.js'
 
 
-const NewPoolForm = ({ formData, updateNewPoolForm, userId, handleSubmit, editMode }) => {
+const NewPoolForm = ({ formData, updateNewPoolForm, pool, userId, handleSubmit, editMode }) => {
   const { name, pool_amount } = formData
 
   const handleChange = event => {

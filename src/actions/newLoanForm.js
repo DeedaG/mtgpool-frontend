@@ -1,7 +1,7 @@
 export const  updateNewLoanForm = (name, value) => {
 
   const formData = {name,value}
-  console.log("formData", formData)
+  console.log("updateNewLoanformData", formData)
   return {
     type: "UPDATE_NEW_LOAN_FORM",
     formData
@@ -15,7 +15,6 @@ export const  resetNewLoanForm = () => {
 }
 
 export const setFormDataForEditLn = loan => {
-console.log("loan", loan)
   const loanFormData = {
     id: loan.id,
     borrower: loan.attributes.borrower,
@@ -26,7 +25,6 @@ console.log("loan", loan)
     close_date: loan.attributes.close_date
   }
 
-  console.log("loanFormData:", loanFormData)
   return {
     type: "SET_FORM_DATA_FOR_EDITLN",
     loanFormData

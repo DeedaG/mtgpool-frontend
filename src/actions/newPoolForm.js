@@ -1,6 +1,6 @@
 export const  updateNewPoolForm = (name, value) => {
   const formData = {name,value}
-
+  console.log("updateNewPoolformdata", formData)
   return {
     type: "UPDATE_NEW_POOL_FORM",
     formData
@@ -22,7 +22,6 @@ export const setFormDataForEdit = pool => {
     investor_id: pool.attributes.investor_id,
     loans: pool.attributes.loans
   }
-  console.log("poolFormData:", poolFormData)
   return {
     type: "SET_FORM_DATA_FOR_EDIT",
     poolFormData

@@ -31,7 +31,7 @@ class InvestorCheckbox extends React.Component {
   render() {
 // debugger
   return (
-    <div className="checkbox" >
+    <div className="checkbox">
      {this.props.investors.map((investor) =>
        <table key={investor.id}><>
         <tbody>

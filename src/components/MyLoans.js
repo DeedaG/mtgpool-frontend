@@ -41,7 +41,7 @@ const MyLoans = ({loans, pools, currentUser}) => {
           <td>${numberWithCommas(loan.attributes.amount.toFixed(2))}</td>
           <td>{loan.attributes.rate}%</td>
           <td>{loan.attributes.term}yr</td>
-          <td>{loan.attributes.pool_id ?
+          <td>{(loan.attributes.pool_id && findpool(loan.attributes.pool_id).length > 0) ?
                 findpool(loan.attributes.pool_id)
                 : <span style={{color: "green"}}>Available</span>
               }</td>

@@ -60,7 +60,6 @@ export const getMyLoans = () => {
 
 export const createLoan = ( loanData, history ) => {
   return dispatch => {
-    console.log(loanData)
     const sendableLoanData = {
       borrower: loanData.borrower,
       term: loanData.term,
@@ -79,7 +78,7 @@ export const createLoan = ( loanData, history ) => {
     })
     .then(r => r.json())
     .then(resp => {
-      console.log("resp", resp)
+      console.log("newLoanresp", resp)
       if (resp.error) {
         alert(resp.error)
       }else {
@@ -93,7 +92,6 @@ export const createLoan = ( loanData, history ) => {
 
 export const updateLoan = ( loanData, history ) => {
   return dispatch => {
-    console.log(loanData)
     const sendableLoanData = {
         id: loanData.id,
         borrower: loanData.borrower,

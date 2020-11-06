@@ -73,7 +73,6 @@ export const createPool = ( poolData, history, userId ) => {
         loans: poolData.loans
     }
 
-    console.log("sendablePoolData", sendablePoolData)
     return fetch('http://localhost:3000/api/v1/pools', {
       credentials: 'include',
       method: 'POST',
@@ -97,7 +96,6 @@ export const createPool = ( poolData, history, userId ) => {
 
 export const updatePool = ( poolData, history ) => {
   return dispatch => {
-    console.log(poolData)
     const sendablePoolData = {
         id: poolData.id,
         name: poolData.name,
@@ -115,7 +113,7 @@ export const updatePool = ( poolData, history ) => {
     })
     .then(r => r.json())
     .then(resp => {
-      console.log("resp", resp)
+      console.log("updatePoolresp", resp)
       if (resp.error) {
         alert(resp.error)
       }else {
@@ -141,8 +139,7 @@ export const deletePool = (pool, poolId, history) => {
           alert(resp.error)
         } else {
           dispatch(deletePoolSuccess(poolId))
-          console.log("pool", pool)
-          pool.attributes.loans.map(loan => loan.pool_id = "")
+          pool.attributes.loans.map(loan => loan.pool_id = null)
           pool.attributes.loans.map(loan => dispatch(updateLoan(loan, history)))
           history.push(`/pools`)
         }
