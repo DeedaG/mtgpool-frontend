@@ -26,12 +26,13 @@ class EditPoolContainer extends React.Component {
       poolId: pool.id,
       ...formData
     }, history)
+    window.location.assign(`/pools/${pool.id}`)
   }
   render() {
     const { history, pool, deletePool } = this.props
     const poolId = pool ? pool.id : null
     return <>
-        <NewPoolForm editMode handleSubmit={this.handleSubmit}/>
+        <NewPoolForm editMode pool={pool} handleSubmit={this.handleSubmit}/>
         <br/>
         <button className="button4" onClick={()=>deletePool(pool, poolId, history)}>Delete Pool</button>
       </>
