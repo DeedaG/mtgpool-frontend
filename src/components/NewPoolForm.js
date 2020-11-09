@@ -5,12 +5,19 @@ import LoanCheckbox from './LoanCheckbox.js'
 import InvestorCheckbox from './InvestorCheckbox.js'
 
 
-const NewPoolForm = ({ formData, updateNewPoolForm, pool, userId, handleSubmit, editMode }) => {
+const NewPoolForm = ({ formData, updateNewPoolForm, allLoans, pool, userId, handleSubmit, editMode }) => {
   const { name, pool_amount } = formData
 
   const handleChange = event => {
-    const { name, value } = event.target
-    updateNewPoolForm(name,value)
+    const {name, value} = event.target
+
+    const findLoan = allLoans.filter(l => l.id === event.target.value)
+    const checkedLoans = formData.loans.concat(findLoan)
+
+    event.target.name === "loan.id" ?
+      updateNewPoolForm("loans", checkedLoans)
+        :
+        updateNewPoolForm(name, value)
   }
 
   return (
@@ -34,7 +41,7 @@ const NewPoolForm = ({ formData, updateNewPoolForm, pool, userId, handleSubmit, 
     <label><h4>Choose Investor:</h4></label>
       <InvestorCheckbox/>
       <label><h4>Available Loans:</h4></label>
-      <LoanCheckbox editMode/>
+      <LoanCheckbox editMode handleChange={handleChange}/>
       <br></br>
         <input
           style={{height:"50px", width:"125px"}}
@@ -50,7 +57,7 @@ const mapStateToProps = state => {
     return {
       formData: state.newPoolForm,
       userId,
-      loans: state.newPoolForm.loans
+      allLoans: state.loans
   }
 }
 
