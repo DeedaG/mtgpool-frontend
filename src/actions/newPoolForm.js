@@ -14,7 +14,7 @@ export const  resetNewPoolForm = () => {
 }
 
 export const setFormDataForEdit = pool => {
-
+  console.log("pool", pool)
   const poolFormData = {
     id: pool.attributes.id,
     name: pool.attributes.name,
