@@ -15,21 +15,23 @@ class LoanCheckbox extends React.Component {
   handleChangedLoans(e, value){
       if (e.target.checked){
 
-        const findLoan = this.props.loans.filter(l => l.id === value)
-
+        if (value.attributes.pool_id === null){
+          value.attributes.pool_id = this.props.poolForm.id
+        }
         this.setState({
-          checkedLoans: [...this.props.checkedLoans, findLoan]
-        },
-            this.props.handleChange(e))
-         } else {
+          checkedLoans: [...this.props.checkedLoans, value]
+          },
+          function () {
+            this.props.updateNewPoolForm("loans", this.state.checkedLoans)
+          })
+        } else {
         this.setState({
           checkedLoans : this.props.checkedLoans
         })
      }
    }
-   debugger
 
-   deletedPool(x){
+   deletedPool = (x) => {
      const findP = this.props.pools.find(pool => pool.id === x);
      if (typeof findP === "undefined"){
        return true
@@ -38,20 +40,17 @@ class LoanCheckbox extends React.Component {
       }
      }
 
-     unCheckState = (e, value) => {
-       window.location.assign(`/pools/${value.attributes.pool_id}/edit`)
-       if (e.target.unchecked){
-           this.setState({
-               checkedLoans: [...this.props.checkedLoans.filter(l => l.id !== value)]
-             },
-             this.props.handleChange(e))
-           }
-     }
-
-
-     unCheck(e, value){
-       document.getElementById("alreadyChecked").checked = false;
-       this.unCheckState(e, value)
+     unCheck = (e, value) => {
+       document.getElementById("alreadyChecked").checked = 'false';
+       if (value.attributes.pool_id != null){
+         value.attributes.pool_id = null
+       }
+       this.setState({
+           checkedLoans: [...this.props.checkedLoans.filter(l => l !== value)]
+           },
+           function () {
+             this.props.updateNewPoolForm("loans", this.state.checkedLoans)
+           })
       }
 
 
@@ -70,7 +69,7 @@ class LoanCheckbox extends React.Component {
                 id="checkId"
                 name="loan.id"
                 type="checkbox"
-                value={loan.id}
+                values={loan.id}
                 onClick={(e)=>this.handleChangedLoans(e,loan)}
                   />${this.numberWithCommas(loan.attributes.amount.toFixed(2))},
                   &nbsp;{loan.attributes.rate}%,
@@ -100,7 +99,7 @@ class LoanCheckbox extends React.Component {
                    value={loan.id}
                    defaultChecked={true}
                    onClick={(e)=>this.unCheck(e, loan)}
-                     /><label for={loan.id}>${this.numberWithCommas(loan.attributes.amount.toFixed(2))},
+                     /> <label for={loan.id}>${this.numberWithCommas(loan.attributes.amount.toFixed(2))},
                      &nbsp;{loan.attributes.rate}%,
                      &nbsp;{loan.attributes.term}yr,
                      &nbsp;{loan.attributes.pool_id ?
@@ -154,7 +153,7 @@ class LoanCheckbox extends React.Component {
       poolForm: state.newPoolForm,
       pools: state.myPools,
       prevLoans,
-      checkedLoans: checkedLoans.concat(prevLoans),
+      checkedLoans: prevLoans ? checkedLoans.concat(prevLoans) : null,
       total,
       open
     }
