@@ -32,6 +32,7 @@ export const deletePoolSuccess = poolId => {
 
 
 export const updatePoolSuccess = pool => {
+  console.log("pool", pool)
   return {
     type: 'UPDATE_POOL',
     pool
