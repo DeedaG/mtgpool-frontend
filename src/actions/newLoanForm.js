@@ -1,7 +1,5 @@
 export const  updateNewLoanForm = (name, value) => {
-
   const formData = {name,value}
-  console.log("updateNewLoanformData", formData)
   return {
     type: "UPDATE_NEW_LOAN_FORM",
     formData
