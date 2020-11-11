@@ -14,7 +14,6 @@ class LoanCheckbox extends React.Component {
 
   handleChangedLoans(e, value){
       if (e.target.checked){
-
         if (value.attributes.pool_id === null){
           value.attributes.pool_id = this.props.poolForm.id
         }
@@ -51,8 +50,16 @@ class LoanCheckbox extends React.Component {
            function () {
              this.props.updateNewPoolForm("loans", this.state.checkedLoans)
            })
-      }
+         }
 
+         myAlert(x) {
+           if (x < 0){
+             const y = -x
+             const z = this.numberWithCommas(y.toFixed(2))
+             console.log("z", z)
+            alert(`Pool Commitment Exceeded by $${z}`);
+            }
+          }
 
   render() {
   return (
@@ -109,11 +116,11 @@ class LoanCheckbox extends React.Component {
                        :
                        <span style={{color: "green"}}>Available</span>}<br></br>
                        </label>
-                </td>
-              </tr>
-             </tbody>
-           </></table>)}
-           </div>
+                  </td>
+                </tr>
+               </tbody>
+             </></table>)}
+             </div>
 
 
           <p>Current commitment: $
@@ -124,7 +131,9 @@ class LoanCheckbox extends React.Component {
         <p>Outstanding: $
           <span  style={{color: "red"}}>
             {this.numberWithCommas(this.props.open.toFixed(2))}
+            {this.myAlert(this.props.open)}
           </span>
+
         </p>
       </div>
      )
