@@ -28,6 +28,7 @@ class EditPoolContainer extends React.Component {
     }, history)
     window.location.assign(`/pools/${pool.id}`)
   }
+  
   render() {
     const { history, pool, deletePool } = this.props
     const poolId = pool ? pool.id : null
@@ -36,7 +37,6 @@ class EditPoolContainer extends React.Component {
         <br/>
         <button className="button4" onClick={()=>deletePool(pool, poolId, history)}>Delete Pool</button>
       </>
-
-  }
+    }
 };
 export default connect(null, {updatePool, deletePool, setFormDataForEdit, resetNewPoolForm })(EditPoolContainer);

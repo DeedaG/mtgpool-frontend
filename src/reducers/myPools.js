@@ -7,8 +7,9 @@ export default (state = [], action) => {
     case "ADD_POOL":
       return state.concat(action.pool)
     case "UPDATE_POOL":
+debugger
+console.log("state", state)
       return state.map(pool => pool.id === action.pool.id ? action.pool : pool)
-
     case "DELETE_POOL":
       return state.filter(pool => pool.id === action.poolId ? false : true)
     case "CLEAR_MY_POOLS":
