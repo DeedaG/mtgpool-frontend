@@ -10,13 +10,15 @@ const NewPoolForm = ({ formData, updateNewPoolForm, allLoans, pool, userId, hand
 
   const handleChange = (event) => {
     const {name, value} = event.target
-    // const findLoan = allLoans.filter(l => l.id === event.target.value)
-    // const addLoans = formData.loans.concat(findLoan)
-    // event.target.name === "loan.id" ?
-    //     updateNewPoolForm("loans", formData.loans)
-        // :
         updateNewPoolForm(name, value)
       }
+
+    const myAlert = (x) => {
+        if (x !== "x"){
+          console.log("x", x)
+         alert("Pool details cannot be changed. Loans already committed");
+         }
+       }
 
   return (
 
@@ -25,15 +27,17 @@ const NewPoolForm = ({ formData, updateNewPoolForm, allLoans, pool, userId, hand
       handleSubmit(formData, userId);}}>
       <br></br>
       <input
+        required
         placeholder="name"
         name="name"
-        onChange={handleChange}
+        onChange={editMode && formData.loans.length > 0 ? myAlert : handleChange}
         value={name}
       /><br/>
       <input
+        required
         placeholder="pool amount"
         name="pool_amount"
-        onChange={handleChange}
+        onChange={editMode && formData.loans.length > 0 ? myAlert : handleChange}
         value={pool_amount}
       /><br/>
     <label><h4>Choose Investor:</h4></label>

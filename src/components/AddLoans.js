@@ -27,7 +27,6 @@ class AddLoans extends React.Component {
      [name]: value
       }
     });
-    console.log("this.state.formData for newLoan", this.state.formData)
     updateNewLoanForm(name,value);
   }
 
