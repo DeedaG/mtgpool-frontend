@@ -8,23 +8,21 @@ import InvestorCheckbox from './InvestorCheckbox.js'
 const NewPoolForm = ({ formData, updateNewPoolForm, allLoans, pool, userId, handleSubmit, editMode }) => {
   const { name, pool_amount } = formData
 
-  const handleChange = event => {
+  const handleChange = (event) => {
     const {name, value} = event.target
-
-    const findLoan = allLoans.filter(l => l.id === event.target.value)
-    const checkedLoans = formData.loans.concat(findLoan)
-
-    event.target.name === "loan.id" ?
-      updateNewPoolForm("loans", checkedLoans)
-        :
+    // const findLoan = allLoans.filter(l => l.id === event.target.value)
+    // const addLoans = formData.loans.concat(findLoan)
+    // event.target.name === "loan.id" ?
+    //     updateNewPoolForm("loans", formData.loans)
+        // :
         updateNewPoolForm(name, value)
-  }
+      }
 
   return (
 
     <form onSubmit = {event => {
       event.preventDefault()
-      handleSubmit(formData, userId)}}>
+      handleSubmit(formData, userId);}}>
       <br></br>
       <input
         placeholder="name"
